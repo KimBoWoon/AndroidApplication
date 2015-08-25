@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <ProgressBar
+            android:id="@+id/foodpro"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/foodimg"
+        android:layout_width="250px"
+        android:layout_height="250px"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="10px" />
+
+    <TextView
+        android:id="@+id/foodname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/foodimg"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/foodaddr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/foodimg"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/foodclcdnm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/foodaddr"
+        android:layout_toRightOf="@id/foodimg"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/foodtelno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:textSize="13sp" />
+
+    <ListView
+        android:id="@+id/foodlist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+</RelativeLayout>

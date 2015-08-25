@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Application</string>
+
+    <!-- APPLICATION NAME-->
+    <string name="foodact">맛집정보</string>
+    <string name="lodgeact">숙박정보</string>
+    <string name="performanceact">공연정보</string>
+    <string name="healthact">건강정보</string>
+    <string name="beautyact">미용정보</string>
+    <string name="courseact">여행정보</string>
+
+    <!-- STRING -->
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- GOOGLE MAPS API -->
+    <string name="google_maps_key" translatable="false" templateMergeStrategy="preserve">
+        AIzaSyA46bI7hV61hLNSowpm0a-9gY6CNShMoaE
+    </string>
+</resources>
