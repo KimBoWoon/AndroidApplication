@@ -16,14 +16,15 @@ import com.example.user.application.food.FoodActivity;
 import com.example.user.application.health.HealthActivity;
 import com.example.user.application.lodge.LodgeActivity;
 import com.example.user.application.maps.MapActivity;
+import com.example.user.application.mypage.MyPageActivity;
 import com.example.user.application.performance.PerformanceActivity;
 import com.example.user.application.splash.SplashActivity;
 
 public class MainActivity extends Activity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         startActivity(new Intent(this, SplashActivity.class));
+        overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
@@ -82,6 +83,10 @@ public class MainActivity extends Activity {
                 case R.id.camerabtn:
                     Intent cameraIntent = new Intent(MainActivity.this, MyCamera.class);
                     startActivity(cameraIntent);
+                    break;
+                case R.id.mypagebtn:
+                    Intent mypageIntent = new Intent(MainActivity.this, MyPageActivity.class);
+                    startActivity(mypageIntent);
                     break;
                 default:
                     break;

@@ -22,10 +22,10 @@ public class FoodList extends BaseAdapter {
     ArrayList<Food> foodsList;
     int layout;
 
-    public FoodList(Context context, int layout, ArrayList<Food> hospitalsList) {
+    public FoodList(Context context, int layout, ArrayList<Food> foodsList) {
         this.maincon = context;
         this.layout = layout;
-        this.foodsList = hospitalsList;
+        this.foodsList = foodsList;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
