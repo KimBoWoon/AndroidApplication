@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.user.application.R;
 import com.example.user.application.beauty.Beauty;
@@ -120,12 +121,9 @@ public class CourseActivity extends Activity {
     public AdapterView.OnItemClickListener foodClick = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            View root = View.inflate(CourseActivity.this, R.layout.course_view, null);
-            LinearLayout layout = (LinearLayout) root.findViewById(R.id.courselayout);
-            TextView text = new TextView(CourseActivity.this);
-            text.setText("" + position);
-            text.setTextSize(30);
-            layout.addView(text);
+            //View root = View.inflate(CourseActivity.this, R.layout.course_view, null);
+            getResources().getLayout(R.layout.course_view);
+            Toast.makeText(CourseActivity.this, position + "Click", Toast.LENGTH_SHORT).show();
         }
     };
 
