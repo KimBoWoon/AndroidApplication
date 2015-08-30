@@ -6,15 +6,16 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.user.application.R;
 import com.example.user.application.beauty.Beauty;
@@ -112,20 +113,11 @@ public class CourseActivity extends Activity {
             ListView listView = (ListView) root.findViewById(R.id.foodlist);
             ProgressBar pro = (ProgressBar) root.findViewById(R.id.foodpro);
             new FoodThread(CourseActivity.this, food, listView, pro).execute();
-            listView.setOnItemClickListener(foodClick);
+            listView.setOnItemClickListener(Click);
 
             return root;
         }
     }
-
-    public AdapterView.OnItemClickListener foodClick = new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            //View root = View.inflate(CourseActivity.this, R.layout.course_view, null);
-            getResources().getLayout(R.layout.course_view);
-            Toast.makeText(CourseActivity.this, position + "Click", Toast.LENGTH_SHORT).show();
-        }
-    };
 
     class HospitalView extends Fragment {
         @Nullable
@@ -136,6 +128,7 @@ public class CourseActivity extends Activity {
             ListView listView = (ListView) root.findViewById(R.id.healthlist);
             ProgressBar pro = (ProgressBar) root.findViewById(R.id.hospitalpro);
             new HealthThread(CourseActivity.this, hos, listView, pro).execute();
+            listView.setOnItemClickListener(Click);
 
             return root;
         }
@@ -150,6 +143,7 @@ public class CourseActivity extends Activity {
             ListView listView = (ListView) root.findViewById(R.id.lodgelist);
             ProgressBar pro = (ProgressBar) root.findViewById(R.id.lodgepro);
             new LodgeThread(CourseActivity.this, lodge, listView, pro).execute();
+            listView.setOnItemClickListener(Click);
 
             return root;
         }
@@ -164,6 +158,7 @@ public class CourseActivity extends Activity {
             ListView listView = (ListView) root.findViewById(R.id.perlist);
             ProgressBar pro = (ProgressBar) root.findViewById(R.id.perpro);
             new PerformanceThread(CourseActivity.this, per, listView, pro).execute();
+            listView.setOnItemClickListener(Click);
 
             return root;
         }
@@ -178,8 +173,25 @@ public class CourseActivity extends Activity {
             ListView listView = (ListView) root.findViewById(R.id.beautylist);
             ProgressBar pro = (ProgressBar) root.findViewById(R.id.beautypro);
             new BeautyThread(CourseActivity.this, beauty, listView, pro).execute();
+            listView.setOnItemClickListener(Click);
 
             return root;
         }
     }
+
+    public AdapterView.OnItemClickListener Click = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            LinearLayout itemSelect = (LinearLayout) findViewById(R.id.courselayout);
+            ImageView img = new ImageView(CourseActivity.this);
+            itemSelect.setOrientation(LinearLayout.HORIZONTAL);
+            itemSelect.setGravity(Gravity.CENTER);
+            LinearLayout.LayoutParams imageSize = (LinearLayout.LayoutParams) itemSelect.getLayoutParams();
+            imageSize.gravity = Gravity.CENTER;
+            imageSize.width = 100;
+            imageSize.height = 100;
+            img.setBackground(getDrawable(R.drawable.nonregistered));
+            itemSelect.addView(img, imageSize);
+        }
+    };
 }

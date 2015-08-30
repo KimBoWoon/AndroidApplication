@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#ffffff">
 
     <ImageView
         android:id="@+id/logo"
@@ -82,12 +83,42 @@
                 android:background="@drawable/health_press" />
 
             <ImageButton
+                android:id="@+id/spectacle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="7sp"
+                android:layout_weight="1"
+                android:background="@drawable/spectacle_press" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <ImageButton
                 android:id="@+id/course"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="7sp"
                 android:layout_weight="1"
                 android:background="@drawable/course_press" />
+
+            <ImageButton
+                android:id="@+id/event"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="7sp"
+                android:layout_weight="1"
+                android:background="@drawable/event_press" />
+
+            <ImageButton
+                android:id="@+id/rhdtkwnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="7sp"
+                android:layout_weight="1"
+                android:background="@drawable/rhdtkwnd_press" />
         </LinearLayout>
     </LinearLayout>
 
@@ -95,7 +126,7 @@
         android:layout_width="match_parent"
         android:layout_height="5px"
         android:layout_margin="10px"
-        android:background="#999999"></LinearLayout>
+        android:background="#c1c1c1"></LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
