@@ -37,67 +37,67 @@ public class Performance implements Serializable {
         this.yPos = yPos;
     }
 
-    public void setCinema(String cinema) {
-        this.cinema = cinema;
-    }
-
     public String getCinema() {
         return cinema;
     }
 
-    public void setTelno(String telno) {
-        this.telno = telno;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setIcon(int icon) {
-        this.icon = icon;
-    }
-
-    public void setClcdnm(String clcdnm) {
-        this.clcdnm = clcdnm;
-    }
-
-    public void setAddr(String addr) {
-        this.addr = addr;
-    }
-
-    public void setxPos(double xPos) {
-        this.xPos = xPos;
-    }
-
-    public void setyPos(double yPos) {
-        this.yPos = yPos;
+    public void setCinema(String cinema) {
+        this.cinema = cinema;
     }
 
     public int getIcon() {
         return icon;
     }
 
+    public void setIcon(int icon) {
+        this.icon = icon;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAddr() {
         return addr;
     }
 
+    public void setAddr(String addr) {
+        this.addr = addr;
+    }
+
     public String getClcdnm() {
         return clcdnm;
+    }
+
+    public void setClcdnm(String clcdnm) {
+        this.clcdnm = clcdnm;
     }
 
     public String getTelno() {
         return telno;
     }
 
+    public void setTelno(String telno) {
+        this.telno = telno;
+    }
+
     public double getxPos() {
         return xPos;
     }
 
+    public void setxPos(double xPos) {
+        this.xPos = xPos;
+    }
+
     public double getyPos() {
         return yPos;
+    }
+
+    public void setyPos(double yPos) {
+        this.yPos = yPos;
     }
 }

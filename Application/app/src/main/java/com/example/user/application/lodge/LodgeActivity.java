@@ -16,22 +16,7 @@ import java.util.ArrayList;
  * Created by user on 15. 8. 9.
  */
 public class LodgeActivity extends Activity {
-    private ListView listView;
-    private ArrayList<Lodge> lodgesList;
-    private ProgressBar pro;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.lodge_list);
-
-        listView = (ListView) findViewById(R.id.lodgelist);
-        pro = (ProgressBar) findViewById(R.id.lodgepro);
-        lodgesList = new ArrayList<Lodge>();
-
-        new LodgeThread(LodgeActivity.this, lodgesList, listView, pro).execute();
-        listView.setOnItemClickListener(listener);
-    }
+    public static ArrayList<Lodge> lodgesList = new ArrayList<Lodge>();
     public AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -43,4 +28,22 @@ public class LodgeActivity extends Activity {
             startActivity(info);
         }
     };
+    ;
+    private ListView listView;
+    private ProgressBar pro;
+    private LodgeList listAdapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.lodge_list);
+
+        listView = (ListView) findViewById(R.id.lodgelist);
+        pro = (ProgressBar) findViewById(R.id.lodgepro);
+        listAdapter = new LodgeList(this, R.layout.lodge_list, lodgesList);
+
+
+        listView.setAdapter(listAdapter);
+        listView.setOnItemClickListener(listener);
+    }
 }

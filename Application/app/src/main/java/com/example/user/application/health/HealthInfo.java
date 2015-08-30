@@ -17,8 +17,8 @@ import com.example.user.application.R;
 /**
  * Created by user on 15. 8. 16.
  */
-public class HospitalInfo extends Activity {
-    private Hospital hospital;
+public class HealthInfo extends Activity {
+    private Health hospital;
     private TextView name;
     private TextView time;
     private TextView useInfo;
@@ -40,6 +40,7 @@ public class HospitalInfo extends Activity {
         tr.add(R.id.healthframe, hi, "HospitalInfo");
         tr.commit();
     }
+
     public void hosClick(View v) {
         switch (v.getId()) {
             case R.id.healthinfobtn:
@@ -90,7 +91,7 @@ public class HospitalInfo extends Activity {
             View root = inflater.inflate(R.layout.hospital_info, container, false);
 
             Intent intent = getIntent();
-            hospital = (Hospital) intent.getSerializableExtra("Item");
+            hospital = (Health) intent.getSerializableExtra("Item");
 
             name = (TextView) root.findViewById(R.id.hosinfoname);
             name.setText(hospital.getName());

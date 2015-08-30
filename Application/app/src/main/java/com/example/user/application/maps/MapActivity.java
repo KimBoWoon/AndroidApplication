@@ -13,8 +13,8 @@ import com.example.user.application.beauty.Beauty;
 import com.example.user.application.beauty.BeautyParser;
 import com.example.user.application.food.Food;
 import com.example.user.application.food.FoodParser;
-import com.example.user.application.health.Hospital;
-import com.example.user.application.health.HospitalParser;
+import com.example.user.application.health.Health;
+import com.example.user.application.health.HealthParser;
 import com.example.user.application.lodge.Lodge;
 import com.example.user.application.lodge.LodgeParser;
 import com.example.user.application.performance.Performance;
@@ -32,17 +32,52 @@ import java.util.ArrayList;
  */
 public class MapActivity extends FragmentActivity {
 
-    private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     LocationManager locationManager;
     String provider;
     GPSInfo gps;
     Criteria criteria;
-    ArrayList<Hospital> hos;
+    ArrayList<Health> hos;
     ArrayList<Food> food;
     ArrayList<Beauty> beauty;
     ArrayList<Performance> per;
     ArrayList<Lodge> lodge;
+    private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     //TextView statusText;
+    LocationListener mListener = new LocationListener() {
+        @Override
+        public void onLocationChanged(Location location) {
+            //mMap.clear();
+            mMap.addMarker(new MarkerOptions().position(new LatLng(location.getLatitude(), location.getLongitude())).title("Marker"));
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+//            String text = "";
+//
+//            switch (status) {
+//                case LocationProvider.OUT_OF_SERVICE:
+//                    text = "서비스 사용 불가";
+//                    break;
+//                case LocationProvider.TEMPORARILY_UNAVAILABLE:
+//                    text = "일시적 사용 불가";
+//                    break;
+//                case LocationProvider.AVAILABLE:
+//                    text = "서비스 사용 가능";
+//                    break;
+//            }
+//            statusText.setText(provider + " 상태 " + text);
+        }
+
+        @Override
+        public void onProviderEnabled(String provider) {
+
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,42 +137,6 @@ public class MapActivity extends FragmentActivity {
         }
     }
 
-    LocationListener mListener = new LocationListener() {
-        @Override
-        public void onLocationChanged(Location location) {
-            //mMap.clear();
-            mMap.addMarker(new MarkerOptions().position(new LatLng(location.getLatitude(), location.getLongitude())).title("Marker"));
-        }
-
-        @Override
-        public void onStatusChanged(String provider, int status, Bundle extras) {
-//            String text = "";
-//
-//            switch (status) {
-//                case LocationProvider.OUT_OF_SERVICE:
-//                    text = "서비스 사용 불가";
-//                    break;
-//                case LocationProvider.TEMPORARILY_UNAVAILABLE:
-//                    text = "일시적 사용 불가";
-//                    break;
-//                case LocationProvider.AVAILABLE:
-//                    text = "서비스 사용 가능";
-//                    break;
-//            }
-//            statusText.setText(provider + " 상태 " + text);
-        }
-
-        @Override
-        public void onProviderEnabled(String provider) {
-
-        }
-
-        @Override
-        public void onProviderDisabled(String provider) {
-
-        }
-    };
-
     /**
      * This is where we can add markers or lines, add listeners or move the camera. In this case, we
      * just add a marker near Africa.
@@ -152,13 +151,13 @@ public class MapActivity extends FragmentActivity {
         food = new ArrayList<Food>();
         lodge = new ArrayList<Lodge>();
         beauty = new ArrayList<Beauty>();
-        hos = new ArrayList<Hospital>();
+        hos = new ArrayList<Health>();
         per = new ArrayList<Performance>();
 
         food = new FoodParser().jsonParser();
         lodge = new LodgeParser().jsonParser();
         beauty = new BeautyParser().jsonParser();
-        hos = new HospitalParser().jsonParser();
+        hos = new HealthParser().jsonParser();
         per = new PerformanceParser().jsonParser();
 
         //lat 위도 lon경도 37.5062883 127.0248064

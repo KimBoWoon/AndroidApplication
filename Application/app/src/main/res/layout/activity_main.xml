@@ -2,9 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:background="#ffffff">
+    tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/logo"
@@ -34,13 +34,18 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
             android:layout_weight="2">
 
             <ImageButton
                 android:id="@+id/food"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="7sp"
+                android:layout_marginBottom="@dimen/margin2"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:layout_marginTop="@dimen/margin2"
                 android:layout_weight="1"
                 android:background="@drawable/food_press" />
 
@@ -48,77 +53,113 @@
                 android:id="@+id/lodge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="7sp"
+                android:layout_marginBottom="@dimen/margin2"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:layout_marginTop="@dimen/margin2"
                 android:layout_weight="1"
-                android:background="@drawable/lodge_press" />
+                android:background="@drawable/lodge_press"
+                android:scaleType="fitCenter" />
 
             <ImageButton
                 android:id="@+id/beauty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="7sp"
+                android:layout_marginBottom="@dimen/margin2"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:layout_marginTop="@dimen/margin2"
                 android:layout_weight="1"
-                android:background="@drawable/beauty_press" />
+                android:background="@drawable/beauty_press"
+                android:scaleType="fitCenter" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
             android:layout_weight="2">
 
             <ImageButton
                 android:id="@+id/performance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="7sp"
+                android:layout_marginBottom="@dimen/margin2"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:layout_marginTop="@dimen/margin2"
                 android:layout_weight="1"
-                android:background="@drawable/performance_press" />
+                android:background="@drawable/performance_press"
+                android:scaleType="fitCenter" />
 
             <ImageButton
                 android:id="@+id/health"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="7sp"
+                android:layout_marginBottom="@dimen/margin2"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:layout_marginTop="@dimen/margin2"
                 android:layout_weight="1"
-                android:background="@drawable/health_press" />
+                android:background="@drawable/health_press"
+                android:scaleType="fitCenter" />
 
             <ImageButton
                 android:id="@+id/spectacle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="7sp"
+                android:layout_marginBottom="@dimen/margin2"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:layout_marginTop="@dimen/margin2"
                 android:layout_weight="1"
-                android:background="@drawable/spectacle_press" />
+                android:background="@drawable/spectacle_press"
+                android:scaleType="fitCenter" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
             android:layout_weight="2">
 
             <ImageButton
                 android:id="@+id/course"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="7sp"
+                android:layout_marginBottom="@dimen/margin2"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:layout_marginTop="@dimen/margin2"
                 android:layout_weight="1"
-                android:background="@drawable/course_press" />
+                android:background="@drawable/course_press"
+                android:scaleType="fitCenter" />
 
             <ImageButton
                 android:id="@+id/event"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="7sp"
+                android:layout_marginBottom="@dimen/margin2"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:layout_marginTop="@dimen/margin2"
                 android:layout_weight="1"
-                android:background="@drawable/event_press" />
+                android:background="@drawable/event_press"
+                android:scaleType="fitCenter" />
 
             <ImageButton
                 android:id="@+id/rhdtkwnd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="7sp"
+                android:layout_marginBottom="@dimen/margin2"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:layout_marginTop="@dimen/margin2"
                 android:layout_weight="1"
-                android:background="@drawable/rhdtkwnd_press" />
+                android:background="@drawable/rhdtkwnd_press"
+                android:scaleType="fitCenter" />
         </LinearLayout>
     </LinearLayout>
 

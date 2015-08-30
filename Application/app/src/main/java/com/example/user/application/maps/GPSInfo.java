@@ -17,28 +17,21 @@ import android.provider.Settings;
  */
 public class GPSInfo extends Service implements LocationListener {
 
+    // 최소 GPS 정보 업데이트 거리 10미터
+    private static final long MIN_DISTANCE_UPDATES = 10;
+    // 최소 GPS 정보 업데이트 시간 밀리세컨이므로 1분
+    private static final long MIN_TIME_UPDATES = 1000 * 60 * 1;
     private final Context mContext;
-
+    protected LocationManager locationManager;
     // 현재 GPS 사용유무
     boolean isGPSEnabled = false;
-
     // 네트워크 사용유무
     boolean isNetworkEnabled = false;
-
     // GPS 상태값
     boolean isGetLocation = false;
-
     Location location;
     double lat; // 위도
     double lon; // 경도
-
-    // 최소 GPS 정보 업데이트 거리 10미터
-    private static final long MIN_DISTANCE_UPDATES = 10;
-
-    // 최소 GPS 정보 업데이트 시간 밀리세컨이므로 1분
-    private static final long MIN_TIME_UPDATES = 1000 * 60 * 1;
-
-    protected LocationManager locationManager;
 
     public GPSInfo(Context context) {
         this.mContext = context;

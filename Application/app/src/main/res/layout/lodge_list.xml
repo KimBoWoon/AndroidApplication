@@ -33,8 +33,8 @@
         android:id="@+id/lodgeaddr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/lodgeimg"
         android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/lodgeimg"
         android:textSize="13sp" />
 
     <TextView

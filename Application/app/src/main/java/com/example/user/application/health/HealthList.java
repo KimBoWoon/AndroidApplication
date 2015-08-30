@@ -1,17 +1,12 @@
 package com.example.user.application.health;
 
 import android.content.Context;
-import android.text.util.Linkify;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.user.application.R;
 
@@ -20,13 +15,13 @@ import java.util.ArrayList;
 /**
  * Created by user on 15. 8. 15.
  */
-public class HospitalList extends BaseAdapter {
+public class HealthList extends BaseAdapter {
     Context maincon;
     LayoutInflater inflater;
-    ArrayList<Hospital> hospitalsList;
+    ArrayList<Health> hospitalsList;
     int layout;
 
-    public HospitalList(Context context, int layout, ArrayList<Hospital> hospitalsList) {
+    public HealthList(Context context, int layout, ArrayList<Health> hospitalsList) {
         this.maincon = context;
         this.layout = layout;
         this.hospitalsList = hospitalsList;

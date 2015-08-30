@@ -40,6 +40,7 @@ public class LodgeInfo extends Activity {
         tr.add(R.id.lodgeframe, li, "LodgeInfo");
         tr.commit();
     }
+
     public void lodgeClick(View v) {
         switch (v.getId()) {
             case R.id.lodgeinfobtn:

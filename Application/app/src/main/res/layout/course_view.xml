@@ -8,8 +8,9 @@
         android:id="@+id/courselayout"
         android:layout_width="match_parent"
         android:layout_height="0px"
+        android:layout_gravity="center"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
     </LinearLayout>
 

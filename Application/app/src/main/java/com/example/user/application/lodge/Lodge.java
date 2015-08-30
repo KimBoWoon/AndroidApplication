@@ -33,60 +33,60 @@ public class Lodge implements Serializable {
         return cnt;
     }
 
-    public int getIcon() {
-        return icon;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getAddr() {
-        return addr;
-    }
-
-    public String getClcdnm() {
-        return clcdnm;
-    }
-
-    public String getTelno() {
-        return telno;
-    }
-
-    public double getyPos() {
-        return yPos;
-    }
-
-    public double getxPos() {
-        return xPos;
-    }
-
-    public void setAddr(String addr) {
-        this.addr = addr;
-    }
-
-    public void setClcdnm(String clcdnm) {
-        this.clcdnm = clcdnm;
-    }
-
     public void setCnt(int cnt) {
         this.cnt = cnt;
+    }
+
+    public int getIcon() {
+        return icon;
     }
 
     public void setIcon(int icon) {
         this.icon = icon;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAddr() {
+        return addr;
+    }
+
+    public void setAddr(String addr) {
+        this.addr = addr;
+    }
+
+    public String getClcdnm() {
+        return clcdnm;
+    }
+
+    public void setClcdnm(String clcdnm) {
+        this.clcdnm = clcdnm;
+    }
+
+    public String getTelno() {
+        return telno;
     }
 
     public void setTelno(String telno) {
         this.telno = telno;
     }
 
+    public double getyPos() {
+        return yPos;
+    }
+
     public void setyPos(double yPos) {
         this.yPos = yPos;
+    }
+
+    public double getxPos() {
+        return xPos;
     }
 
     public void setxPos(double xPos) {

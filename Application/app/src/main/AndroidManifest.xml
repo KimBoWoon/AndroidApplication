@@ -59,6 +59,12 @@
         <activity
             android:name=".mypage.MyPageActivity"
             android:label="개인정보" />
+        <activity
+            android:name=".spectacle.SpectacleActivity"
+            android:label="a" />
+        <activity
+            android:name=".event.EventActivity"
+            android:label="이벤트" />
 
         <meta-data
             android:name="com.google.android.gms.version"
