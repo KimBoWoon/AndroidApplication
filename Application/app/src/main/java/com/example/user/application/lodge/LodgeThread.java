@@ -2,12 +2,8 @@ package com.example.user.application.lodge;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.ProgressBar;
 
 import com.example.user.application.R;
-import com.example.user.application.health.HospitalList;
 
 import java.util.ArrayList;
 
@@ -16,31 +12,22 @@ import java.util.ArrayList;
  */
 public class LodgeThread extends AsyncTask<ArrayList<Lodge>, Void, ArrayList<Lodge>> {
     private ArrayList<Lodge> lodgesList;
-    private LodgeList listAdapter;
     private Context context;
-    private ListView listView;
-    private ProgressBar pro;
 
-    public LodgeThread(Context context, ArrayList<Lodge> lodgesList, ListView listView, ProgressBar pro) {
+    public LodgeThread(Context context, ArrayList<Lodge> lodgesList) {
         super();
         this.context = context;
-        this.listView = listView;
         this.lodgesList = lodgesList;
-        this.pro = pro;
-        this.listAdapter = new LodgeList(context, R.layout.lodge_list, lodgesList);
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        pro.setVisibility(View.VISIBLE);
     }
 
     @Override
     protected void onPostExecute(ArrayList<Lodge> lodges) {
         super.onPostExecute(lodges);
-        pro.setVisibility(View.GONE);
-        listView.setAdapter(listAdapter);
     }
 
     @Override

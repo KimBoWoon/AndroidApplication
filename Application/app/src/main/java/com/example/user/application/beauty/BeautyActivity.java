@@ -9,8 +9,6 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.example.user.application.R;
-import com.example.user.application.food.Food;
-import com.example.user.application.food.FoodThread;
 
 import java.util.ArrayList;
 
@@ -18,22 +16,7 @@ import java.util.ArrayList;
  * Created by user on 15. 8. 12.
  */
 public class BeautyActivity extends Activity {
-    private ListView listView;
-    private ArrayList<Beauty> beautyList;
-    private ProgressBar pro;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.beauty_list);
-
-        listView = (ListView) findViewById(R.id.beautylist);
-        pro = (ProgressBar) findViewById(R.id.beautypro);
-        beautyList = new ArrayList<Beauty>();
-
-        new BeautyThread(BeautyActivity.this, beautyList, listView, pro).execute();
-        listView.setOnItemClickListener(listener);
-    }
+    public static ArrayList<Beauty> beautyList = new ArrayList<Beauty>();
     public AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -45,4 +28,21 @@ public class BeautyActivity extends Activity {
             startActivity(info);
         }
     };
+    BeautyList listAdapter;
+    private ListView listView;
+    private ProgressBar pro;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.beauty_list);
+
+        listView = (ListView) findViewById(R.id.beautylist);
+        pro = (ProgressBar) findViewById(R.id.beautypro);
+        listAdapter = new BeautyList(this, R.layout.beauty_list, beautyList);
+
+
+        listView.setAdapter(listAdapter);
+        listView.setOnItemClickListener(listener);
+    }
 }

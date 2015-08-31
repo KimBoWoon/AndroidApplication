@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.example.user.application.R;
 
@@ -17,9 +16,21 @@ import java.util.ArrayList;
  * Created by user on 15. 8. 9.
  */
 public class HealthActivity extends Activity {
+    public static ArrayList<Health> hospitalList = new ArrayList<Health>();
+    public AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Intent info = new Intent(HealthActivity.this, HealthInfo.class);
+            Health hospital = new Health(hospitalList.get(position).getIcon(), hospitalList.get(position).getName(),
+                    hospitalList.get(position).getAddr(), hospitalList.get(position).getClcdnm(),
+                    hospitalList.get(position).getTelno(), hospitalList.get(position).getxPos(), hospitalList.get(position).getyPos());
+            info.putExtra("Item", hospital);
+            startActivity(info);
+        }
+    };
     private ListView listView;
-    private ArrayList<Hospital> hospitalList;
     private ProgressBar pro;
+    private HealthList listAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,21 +39,10 @@ public class HealthActivity extends Activity {
 
         listView = (ListView) findViewById(R.id.healthlist);
         pro = (ProgressBar) findViewById(R.id.hospitalpro);
-        hospitalList = new ArrayList<Hospital>();
+        listAdapter = new HealthList(this, R.layout.hospital_list, hospitalList);
 
-        new HealthThread(HealthActivity.this, hospitalList, listView, pro).execute();
+
+        listView.setAdapter(listAdapter);
         listView.setOnItemClickListener(listener);
     }
-
-    public AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Intent info = new Intent(HealthActivity.this, HospitalInfo.class);
-            Hospital hospital = new Hospital(hospitalList.get(position).getIcon(), hospitalList.get(position).getName(),
-                    hospitalList.get(position).getAddr(), hospitalList.get(position).getClcdnm(),
-                    hospitalList.get(position).getTelno(), hospitalList.get(position).getxPos(), hospitalList.get(position).getyPos());
-            info.putExtra("Item", hospital);
-            startActivity(info);
-        }
-    };
 }

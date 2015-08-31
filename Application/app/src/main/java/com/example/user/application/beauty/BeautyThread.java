@@ -2,9 +2,6 @@ package com.example.user.application.beauty;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.ProgressBar;
 
 import com.example.user.application.R;
 
@@ -15,31 +12,22 @@ import java.util.ArrayList;
  */
 public class BeautyThread extends AsyncTask<ArrayList<Beauty>, Void, ArrayList<Beauty>> {
     ArrayList<Beauty> beautyList;
-    BeautyList listAdapter;
     Context context;
-    ListView listView;
-    ProgressBar pro;
 
-    public BeautyThread(Context context, ArrayList<Beauty> beautyList, ListView listView, ProgressBar pro) {
+    public BeautyThread(Context context, ArrayList<Beauty> beautyList) {
         super();
         this.context = context;
-        this.listView = listView;
         this.beautyList = beautyList;
-        this.pro = pro;
-        this.listAdapter = new BeautyList(context, R.layout.beauty_list, beautyList);
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        pro.setVisibility(View.VISIBLE);
     }
 
     @Override
     protected void onPostExecute(ArrayList<Beauty> foods) {
         super.onPostExecute(foods);
-        pro.setVisibility(View.GONE);
-        listView.setAdapter(listAdapter);
     }
 
     @Override

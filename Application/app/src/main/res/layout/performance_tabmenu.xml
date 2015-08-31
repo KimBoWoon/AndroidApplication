@@ -9,24 +9,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <Button
+        <ImageButton
             android:id="@+id/perinfobtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/info_press"
             android:onClick="perClick"
             android:text="정보" />
 
-        <Button
+        <ImageButton
             android:id="@+id/permenubtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/menu_press"
             android:onClick="perClick"
             android:text="공연정보" />
 
-        <Button
+        <ImageButton
             android:id="@+id/perreviewbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/review_press"
             android:onClick="perClick"
             android:text="리뷰" />
     </LinearLayout>

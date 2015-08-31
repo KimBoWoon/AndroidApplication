@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.user.application.R;
@@ -26,35 +27,53 @@ public class LodgeInfo extends Activity {
     private TextView telno;
     private FragmentManager fragmentManager;
     private Fragment fragment;
+    private ImageButton infobtn;
+    private ImageButton menubtn;
+    private ImageButton reviewbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lodge_tabmenu);
 
+        infobtn = (ImageButton) findViewById(R.id.lodgeinfobtn);
+        menubtn = (ImageButton) findViewById(R.id.lodgemenubtn);
+        reviewbtn = (ImageButton) findViewById(R.id.lodgereviewbtn);
+
         fragmentManager = getFragmentManager();
         fragment = fragmentManager.findFragmentById(R.id.lodgeframe);
 
+        infobtn.setBackground(getDrawable(R.drawable.information_click));
         FragmentTransaction tr = fragmentManager.beginTransaction();
         LodgeInfomation li = new LodgeInfomation();
         tr.add(R.id.lodgeframe, li, "LodgeInfo");
         tr.commit();
     }
+
     public void lodgeClick(View v) {
         switch (v.getId()) {
             case R.id.lodgeinfobtn:
+                infobtn.setBackground(getDrawable(R.drawable.information_click));
+                menubtn.setBackground(getDrawable(R.drawable.menu));
+                reviewbtn.setBackground(getDrawable(R.drawable.review));
                 FragmentTransaction tr1 = fragmentManager.beginTransaction();
                 LodgeInfomation li = new LodgeInfomation();
                 tr1.replace(R.id.lodgeframe, li, "LodgeInfo");
                 tr1.commit();
                 break;
             case R.id.lodgemenubtn:
+                infobtn.setBackground(getDrawable(R.drawable.information));
+                menubtn.setBackground(getDrawable(R.drawable.menu_click));
+                reviewbtn.setBackground(getDrawable(R.drawable.review));
                 FragmentTransaction tr2 = fragmentManager.beginTransaction();
                 LodgeUse lm = new LodgeUse();
                 tr2.replace(R.id.lodgeframe, lm, "LodgeMenu");
                 tr2.commit();
                 break;
             case R.id.lodgereviewbtn:
+                infobtn.setBackground(getDrawable(R.drawable.information));
+                menubtn.setBackground(getDrawable(R.drawable.menu));
+                reviewbtn.setBackground(getDrawable(R.drawable.review_click));
                 FragmentTransaction tr3 = fragmentManager.beginTransaction();
                 LodgeReview lr = new LodgeReview();
                 tr3.replace(R.id.lodgeframe, lr, "LodgeReview");

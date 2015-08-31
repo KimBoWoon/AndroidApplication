@@ -2,9 +2,6 @@ package com.example.user.application.food;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.ProgressBar;
 
 import com.example.user.application.R;
 
@@ -15,31 +12,22 @@ import java.util.ArrayList;
  */
 public class FoodThread extends AsyncTask<ArrayList<Food>, Void, ArrayList<Food>> {
     ArrayList<Food> foodList;
-    FoodList listAdapter;
     Context context;
-    ListView listView;
-    ProgressBar pro;
 
-    public FoodThread(Context context, ArrayList<Food> foodList, ListView listView, ProgressBar pro) {
+    public FoodThread(Context context, ArrayList<Food> foodList) {
         super();
         this.context = context;
-        this.listView = listView;
         this.foodList = foodList;
-        this.pro = pro;
-        this.listAdapter = new FoodList(context, R.layout.food_list, foodList);
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        pro.setVisibility(View.VISIBLE);
     }
 
     @Override
     protected void onPostExecute(ArrayList<Food> foods) {
         super.onPostExecute(foods);
-        pro.setVisibility(View.GONE);
-        listView.setAdapter(listAdapter);
     }
 
     @Override

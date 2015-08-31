@@ -2,9 +2,6 @@ package com.example.user.application.performance;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.ProgressBar;
 
 import com.example.user.application.R;
 
@@ -15,31 +12,22 @@ import java.util.ArrayList;
  */
 public class PerformanceThread extends AsyncTask<ArrayList<Performance>, Void, ArrayList<Performance>> {
     ArrayList<Performance> perList;
-    PerformanceList listAdapter;
     Context context;
-    ListView listView;
-    ProgressBar pro;
 
-    public PerformanceThread(Context context, ArrayList<Performance> perList, ListView listView, ProgressBar pro) {
+    public PerformanceThread(Context context, ArrayList<Performance> perList) {
         super();
         this.context = context;
-        this.listView = listView;
         this.perList = perList;
-        this.pro = pro;
-        this.listAdapter = new PerformanceList(context, R.layout.performance_list, perList);
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        pro.setVisibility(View.VISIBLE);
     }
 
     @Override
     protected void onPostExecute(ArrayList<Performance> foods) {
         super.onPostExecute(foods);
-        pro.setVisibility(View.GONE);
-        listView.setAdapter(listAdapter);
     }
 
     @Override

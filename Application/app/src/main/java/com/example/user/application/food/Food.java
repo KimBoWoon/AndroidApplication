@@ -1,6 +1,7 @@
 package com.example.user.application.food;
 
 import java.io.Serializable;
+import java.util.Random;
 
 /**
  * Created by user on 15. 8. 15.
@@ -11,6 +12,7 @@ public class Food implements Serializable {
     private String clcdnm;
     private String telno;
     private int icon;
+    private float star;
     private double xPos;
     private double yPos;
 
@@ -22,6 +24,7 @@ public class Food implements Serializable {
         this.icon = 0;
         this.xPos = 0;
         this.yPos = 0;
+        this.star = 0;
     }
 
     public Food(int icon, String name, String addr, String clcdnm, String telno, double xPos, double yPos) {
@@ -32,61 +35,71 @@ public class Food implements Serializable {
         this.telno = telno;
         this.xPos = xPos;
         this.yPos = yPos;
+        Random r = new Random();
+        this.star = (r.nextFloat() % 5.0f) * 10;
     }
 
-    public void setTelno(String telno) {
-        this.telno = telno;
+    public float getStar() {
+        return star;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setIcon(int icon) {
-        this.icon = icon;
-    }
-
-    public void setClcdnm(String clcdnm) {
-        this.clcdnm = clcdnm;
-    }
-
-    public void setAddr(String addr) {
-        this.addr = addr;
-    }
-
-    public void setxPos(double xPos) {
-        this.xPos = xPos;
-    }
-
-    public void setyPos(double yPos) {
-        this.yPos = yPos;
+    public void setStar(int star) {
+        this.star = star;
     }
 
     public int getIcon() {
         return icon;
     }
 
+    public void setIcon(int icon) {
+        this.icon = icon;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAddr() {
         return addr;
     }
 
+    public void setAddr(String addr) {
+        this.addr = addr;
+    }
+
     public String getClcdnm() {
         return clcdnm;
+    }
+
+    public void setClcdnm(String clcdnm) {
+        this.clcdnm = clcdnm;
     }
 
     public String getTelno() {
         return telno;
     }
 
+    public void setTelno(String telno) {
+        this.telno = telno;
+    }
+
     public double getxPos() {
         return xPos;
     }
 
+    public void setxPos(double xPos) {
+        this.xPos = xPos;
+    }
+
     public double getyPos() {
         return yPos;
+    }
+
+    public void setyPos(double yPos) {
+        this.yPos = yPos;
     }
 }

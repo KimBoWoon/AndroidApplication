@@ -6,26 +6,30 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.example.user.application.R;
 import com.example.user.application.beauty.Beauty;
-import com.example.user.application.beauty.BeautyThread;
+import com.example.user.application.beauty.BeautyActivity;
+import com.example.user.application.beauty.BeautyList;
 import com.example.user.application.food.Food;
-import com.example.user.application.food.FoodThread;
-import com.example.user.application.health.HealthThread;
-import com.example.user.application.health.Hospital;
+import com.example.user.application.food.FoodActivity;
+import com.example.user.application.food.FoodList;
+import com.example.user.application.health.Health;
+import com.example.user.application.health.HealthActivity;
+import com.example.user.application.health.HealthList;
 import com.example.user.application.lodge.Lodge;
-import com.example.user.application.lodge.LodgeThread;
+import com.example.user.application.lodge.LodgeActivity;
+import com.example.user.application.lodge.LodgeList;
 import com.example.user.application.performance.Performance;
-import com.example.user.application.performance.PerformanceThread;
+import com.example.user.application.performance.PerformanceActivity;
+import com.example.user.application.performance.PerformanceList;
 
 import java.util.ArrayList;
 
@@ -33,8 +37,23 @@ import java.util.ArrayList;
  * Created by user on 15. 8. 12.
  */
 public class CourseActivity extends Activity {
+    public AdapterView.OnItemClickListener Click = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            LinearLayout item = (LinearLayout) View.inflate(CourseActivity.this, R.layout.item, null);
+            LinearLayout itemSelect = (LinearLayout) findViewById(R.id.courselayout);
+            itemSelect.setGravity(Gravity.CENTER);
+            itemSelect.addView(item);
+//            ImageView img = new ImageView(CourseActivity.this);
+//            LinearLayout.LayoutParams imageSize = (LinearLayout.LayoutParams) itemSelect.getLayoutParams();
+//            imageSize.width = 100;
+//            imageSize.height = 100;
+//            img.setBackground(getDrawable(R.drawable.nonregistered));
+//            itemSelect.addView(img, imageSize);
+        }
+    };
     private ArrayList<Food> food;
-    private ArrayList<Hospital> hos;
+    private ArrayList<Health> hos;
     private ArrayList<Lodge> lodge;
     private ArrayList<Performance> per;
     private ArrayList<Beauty> beauty;
@@ -50,7 +69,7 @@ public class CourseActivity extends Activity {
 
     public void init() {
         food = new ArrayList<Food>();
-        hos = new ArrayList<Hospital>();
+        hos = new ArrayList<Health>();
         lodge = new ArrayList<Lodge>();
         per = new ArrayList<Performance>();
         beauty = new ArrayList<Beauty>();
@@ -107,38 +126,23 @@ public class CourseActivity extends Activity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View root = inflater.inflate(R.layout.food_list, container, false);
-
             ListView listView = (ListView) root.findViewById(R.id.foodlist);
-            ProgressBar pro = (ProgressBar) root.findViewById(R.id.foodpro);
-            new FoodThread(CourseActivity.this, food, listView, pro).execute();
-            listView.setOnItemClickListener(foodClick);
-
+            FoodList listAdapter = new FoodList(CourseActivity.this, R.layout.food_list, FoodActivity.foodList);
+            listView.setAdapter(listAdapter);
+            listView.setOnItemClickListener(Click);
             return root;
         }
     }
-
-    public AdapterView.OnItemClickListener foodClick = new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            View root = View.inflate(CourseActivity.this, R.layout.course_view, null);
-            LinearLayout layout = (LinearLayout) root.findViewById(R.id.courselayout);
-            TextView text = new TextView(CourseActivity.this);
-            text.setText("" + position);
-            text.setTextSize(30);
-            layout.addView(text);
-        }
-    };
 
     class HospitalView extends Fragment {
         @Nullable
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View root = inflater.inflate(R.layout.hospital_list, container, false);
-
             ListView listView = (ListView) root.findViewById(R.id.healthlist);
-            ProgressBar pro = (ProgressBar) root.findViewById(R.id.hospitalpro);
-            new HealthThread(CourseActivity.this, hos, listView, pro).execute();
-
+            HealthList listAdapter = new HealthList(CourseActivity.this, R.layout.hospital_list, HealthActivity.hospitalList);
+            listView.setAdapter(listAdapter);
+            listView.setOnItemClickListener(Click);
             return root;
         }
     }
@@ -148,11 +152,10 @@ public class CourseActivity extends Activity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View root = inflater.inflate(R.layout.lodge_list, container, false);
-
             ListView listView = (ListView) root.findViewById(R.id.lodgelist);
-            ProgressBar pro = (ProgressBar) root.findViewById(R.id.lodgepro);
-            new LodgeThread(CourseActivity.this, lodge, listView, pro).execute();
-
+            LodgeList listAdapter = new LodgeList(CourseActivity.this, R.layout.lodge_list, LodgeActivity.lodgesList);
+            listView.setAdapter(listAdapter);
+            listView.setOnItemClickListener(Click);
             return root;
         }
     }
@@ -162,11 +165,10 @@ public class CourseActivity extends Activity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View root = inflater.inflate(R.layout.performance_list, container, false);
-
             ListView listView = (ListView) root.findViewById(R.id.perlist);
-            ProgressBar pro = (ProgressBar) root.findViewById(R.id.perpro);
-            new PerformanceThread(CourseActivity.this, per, listView, pro).execute();
-
+            PerformanceList listAdapter = new PerformanceList(CourseActivity.this, R.layout.performance_list, PerformanceActivity.persList);
+            listView.setAdapter(listAdapter);
+            listView.setOnItemClickListener(Click);
             return root;
         }
     }
@@ -176,11 +178,10 @@ public class CourseActivity extends Activity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View root = inflater.inflate(R.layout.beauty_list, container, false);
-
             ListView listView = (ListView) root.findViewById(R.id.beautylist);
-            ProgressBar pro = (ProgressBar) root.findViewById(R.id.beautypro);
-            new BeautyThread(CourseActivity.this, beauty, listView, pro).execute();
-
+            BeautyList listAdapter = new BeautyList(CourseActivity.this, R.layout.beauty_list, BeautyActivity.beautyList);
+            listView.setAdapter(listAdapter);
+            listView.setOnItemClickListener(Click);
             return root;
         }
     }

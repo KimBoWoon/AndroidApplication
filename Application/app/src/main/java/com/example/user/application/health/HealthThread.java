@@ -2,9 +2,6 @@ package com.example.user.application.health;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.ProgressBar;
 
 import com.example.user.application.R;
 
@@ -13,33 +10,24 @@ import java.util.ArrayList;
 /**
  * Created by user on 15. 8. 16.
  */
-public class HealthThread extends AsyncTask<ArrayList<Hospital>, Void, ArrayList<Hospital>> {
-    private ArrayList<Hospital> hospitalList;
-    private HospitalList listAdapter;
+public class HealthThread extends AsyncTask<ArrayList<Health>, Void, ArrayList<Health>> {
+    private ArrayList<Health> hospitalList;
     private Context context;
-    private ProgressBar pro;
-    private ListView listView;
 
-    public HealthThread(Context context, ArrayList<Hospital> hospitalList, ListView listView, ProgressBar pro) {
+    public HealthThread(Context context, ArrayList<Health> hospitalList) {
         super();
         this.context = context;
         this.hospitalList = hospitalList;
-        this.pro = pro;
-        this.listView = listView;
-        this.listAdapter = new HospitalList(context, R.layout.hospital_list, hospitalList);
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        pro.setVisibility(View.VISIBLE);
     }
 
     @Override
-    protected void onPostExecute(ArrayList<Hospital> hospitals) {
+    protected void onPostExecute(ArrayList<Health> hospitals) {
         super.onPostExecute(hospitals);
-        pro.setVisibility(View.GONE);
-        listView.setAdapter(listAdapter);
     }
 
     @Override
@@ -48,7 +36,7 @@ public class HealthThread extends AsyncTask<ArrayList<Hospital>, Void, ArrayList
     }
 
     @Override
-    protected void onCancelled(ArrayList<Hospital> hospitals) {
+    protected void onCancelled(ArrayList<Health> hospitals) {
         super.onCancelled(hospitals);
     }
 
@@ -58,18 +46,17 @@ public class HealthThread extends AsyncTask<ArrayList<Hospital>, Void, ArrayList
     }
 
     @Override
-    protected ArrayList<Hospital> doInBackground(ArrayList<Hospital>... params) {
-        HospitalParser parser = new HospitalParser();
-        ArrayList<Hospital> DTOList = null;
+    protected ArrayList<Health> doInBackground(ArrayList<Health>... params) {
+        HealthParser parser = new HealthParser();
+        ArrayList<Health> DTOList = null;
         try {
-            //DTOList = parser.apiParserSearch();
             DTOList = parser.jsonParser();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        for (Hospital entity : DTOList) {
-            hospitalList.add(new Hospital(R.drawable.nonregistered, entity.getName(), entity.getAddr(), entity.getClcdnm(), entity.getTelno(), entity.getxPos(), entity.getyPos()));
+        for (Health entity : DTOList) {
+            hospitalList.add(new Health(R.drawable.nonregistered, entity.getName(), entity.getAddr(), entity.getClcdnm(), entity.getTelno(), entity.getxPos(), entity.getyPos()));
         }
         return hospitalList;
     }

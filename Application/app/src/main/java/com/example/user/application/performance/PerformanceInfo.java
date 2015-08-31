@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.user.application.R;
@@ -26,15 +27,23 @@ public class PerformanceInfo extends Activity {
     private TextView telno;
     private FragmentManager fragmentManager;
     private Fragment fragment;
+    private ImageButton infobtn;
+    private ImageButton menubtn;
+    private ImageButton reviewbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.performance_tabmenu);
 
+        infobtn = (ImageButton) findViewById(R.id.perinfobtn);
+        menubtn = (ImageButton) findViewById(R.id.permenubtn);
+        reviewbtn = (ImageButton) findViewById(R.id.perreviewbtn);
+
         fragmentManager = getFragmentManager();
         fragment = fragmentManager.findFragmentById(R.id.perframe);
 
+        infobtn.setBackground(getDrawable(R.drawable.information_click));
         FragmentTransaction tr = fragmentManager.beginTransaction();
         PerformanceInfomation pi = new PerformanceInfomation();
         tr.add(R.id.perframe, pi, "PerformanceInfo");
@@ -44,18 +53,27 @@ public class PerformanceInfo extends Activity {
     public void perClick(View v) {
         switch (v.getId()) {
             case R.id.perinfobtn:
+                infobtn.setBackground(getDrawable(R.drawable.information_click));
+                menubtn.setBackground(getDrawable(R.drawable.menu));
+                reviewbtn.setBackground(getDrawable(R.drawable.review));
                 FragmentTransaction tr1 = fragmentManager.beginTransaction();
                 PerformanceInfomation pi = new PerformanceInfomation();
                 tr1.replace(R.id.perframe, pi, "PerformanceInfo");
                 tr1.commit();
                 break;
             case R.id.permenubtn:
+                infobtn.setBackground(getDrawable(R.drawable.information));
+                menubtn.setBackground(getDrawable(R.drawable.menu_click));
+                reviewbtn.setBackground(getDrawable(R.drawable.review));
                 FragmentTransaction tr2 = fragmentManager.beginTransaction();
                 PerformanceMenu pm = new PerformanceMenu();
                 tr2.replace(R.id.perframe, pm, "PerformanceMenu");
                 tr2.commit();
                 break;
             case R.id.perreviewbtn:
+                infobtn.setBackground(getDrawable(R.drawable.information));
+                menubtn.setBackground(getDrawable(R.drawable.menu));
+                reviewbtn.setBackground(getDrawable(R.drawable.review_click));
                 FragmentTransaction tr3 = fragmentManager.beginTransaction();
                 PerformanceReview pr = new PerformanceReview();
                 tr3.replace(R.id.perframe, pr, "PerformanceReview");

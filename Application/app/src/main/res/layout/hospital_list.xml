@@ -33,8 +33,8 @@
         android:id="@+id/hospitaladdr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/hospitalimg"
         android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/hospitalimg"
         android:textSize="13sp" />
 
     <TextView

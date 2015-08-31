@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.user.application.R;
@@ -26,15 +27,23 @@ public class BeautyInfo extends Activity {
     private TextView telno;
     private FragmentManager fragmentManager;
     private Fragment fragment;
+    private ImageButton infobtn;
+    private ImageButton menubtn;
+    private ImageButton reviewbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.beauty_tabmenu);
 
+        infobtn = (ImageButton) findViewById(R.id.beautyinfobtn);
+        menubtn = (ImageButton) findViewById(R.id.beautymenubtn);
+        reviewbtn = (ImageButton) findViewById(R.id.beautyreviewbtn);
+
         fragmentManager = getFragmentManager();
         fragment = fragmentManager.findFragmentById(R.id.beautyframe);
 
+        infobtn.setBackground(getDrawable(R.drawable.information_click));
         FragmentTransaction tr = fragmentManager.beginTransaction();
         BeautyInfomation bi = new BeautyInfomation();
         tr.add(R.id.beautyframe, bi, "BeautyInfo");
@@ -44,18 +53,27 @@ public class BeautyInfo extends Activity {
     public void beautyClick(View v) {
         switch (v.getId()) {
             case R.id.beautyinfobtn:
+                infobtn.setBackground(getDrawable(R.drawable.information_click));
+                menubtn.setBackground(getDrawable(R.drawable.menu));
+                reviewbtn.setBackground(getDrawable(R.drawable.review));
                 FragmentTransaction tr1 = fragmentManager.beginTransaction();
                 BeautyInfomation bi = new BeautyInfomation();
                 tr1.replace(R.id.beautyframe, bi, "BeautyInfo");
                 tr1.commit();
                 break;
             case R.id.beautymenubtn:
+                infobtn.setBackground(getDrawable(R.drawable.information));
+                menubtn.setBackground(getDrawable(R.drawable.menu_click));
+                reviewbtn.setBackground(getDrawable(R.drawable.review));
                 FragmentTransaction tr2 = fragmentManager.beginTransaction();
                 BeautyMenu bm = new BeautyMenu();
                 tr2.replace(R.id.beautyframe, bm, "BeautyMenu");
                 tr2.commit();
                 break;
             case R.id.beautyreviewbtn:
+                infobtn.setBackground(getDrawable(R.drawable.information));
+                menubtn.setBackground(getDrawable(R.drawable.menu));
+                reviewbtn.setBackground(getDrawable(R.drawable.review_click));
                 FragmentTransaction tr3 = fragmentManager.beginTransaction();
                 BeautyReview br = new BeautyReview();
                 tr3.replace(R.id.beautyframe, br, "BeautyReview");

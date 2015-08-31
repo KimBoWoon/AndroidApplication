@@ -41,18 +41,20 @@
         android:id="@+id/foodclcdnm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_below="@id/foodaddr"
         android:layout_toRightOf="@id/foodimg"
         android:textSize="13sp" />
 
-    <TextView
-        android:id="@+id/foodtelno"
+    <RatingBar
+        android:id="@+id/foodrating"
+        style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="60px"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:textSize="13sp" />
+        android:layout_toRightOf="@id/foodimg"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.1" />
 
     <ListView
         android:id="@+id/foodlist"

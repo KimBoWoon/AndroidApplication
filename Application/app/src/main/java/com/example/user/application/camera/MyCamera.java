@@ -1,9 +1,7 @@
 package com.example.user.application.camera;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.hardware.Camera;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,8 +14,25 @@ public class MyCamera extends Activity {
      * Called when the activity is first created.
      */
     private ControlCamera Control;
+    Button.OnClickListener s = new Button.OnClickListener() {
+        public void onClick(View v) {
+            Control.takePicture();
+        }
+    };
+    Button.OnClickListener f = new Button.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Control.getCamera().autoFocus(autoFocus);
+        }
+    };
     private FrameLayout mPreview;
     private Button shutterbtn;
+    Camera.AutoFocusCallback autoFocus = new Camera.AutoFocusCallback() {
+        @Override
+        public void onAutoFocus(boolean success, Camera camera) {
+            shutterbtn.setEnabled(success);
+        }
+    };
     private Button focuseBtn;
 
     @Override
@@ -36,24 +51,4 @@ public class MyCamera extends Activity {
         //this.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(file)));
         //context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(file)));
     }
-
-    Button.OnClickListener s = new Button.OnClickListener() {
-        public void onClick(View v) {
-            Control.takePicture();
-        }
-    };
-
-    Button.OnClickListener f = new Button.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Control.getCamera().autoFocus(autoFocus);
-        }
-    };
-
-    Camera.AutoFocusCallback autoFocus = new Camera.AutoFocusCallback() {
-        @Override
-        public void onAutoFocus(boolean success, Camera camera) {
-            shutterbtn.setEnabled(success);
-        }
-    };
 }

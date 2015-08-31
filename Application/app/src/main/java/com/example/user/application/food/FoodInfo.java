@@ -5,11 +5,14 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.user.application.R;
@@ -26,15 +29,23 @@ public class FoodInfo extends Activity {
     private TextView telno;
     private FragmentManager fragmentManager;
     private Fragment fragment;
+    private ImageButton infobtn;
+    private ImageButton menubtn;
+    private ImageButton reviewbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.food_tabmenu);
 
+        infobtn = (ImageButton) findViewById(R.id.foodinfobtn);
+        menubtn = (ImageButton) findViewById(R.id.foodmenubtn);
+        reviewbtn = (ImageButton) findViewById(R.id.foodreviewbtn);
+
         fragmentManager = getFragmentManager();
         fragment = fragmentManager.findFragmentById(R.id.foodframe);
 
+        infobtn.setBackground(getDrawable(R.drawable.information_click));
         FragmentTransaction tr = fragmentManager.beginTransaction();
         FoodInfomation fi = new FoodInfomation();
         tr.add(R.id.foodframe, fi, "FoodInfo");
@@ -44,18 +55,30 @@ public class FoodInfo extends Activity {
     public void foodClick(View v) {
         switch (v.getId()) {
             case R.id.foodinfobtn:
+                infobtn.setBackground(getDrawable(R.drawable.information_click));
+                menubtn.setBackground(getDrawable(R.drawable.menu));
+                reviewbtn.setBackground(getDrawable(R.drawable.review));
+
                 FragmentTransaction tr1 = fragmentManager.beginTransaction();
                 FoodInfomation fi = new FoodInfomation();
                 tr1.replace(R.id.foodframe, fi, "FoodInfo");
                 tr1.commit();
                 break;
             case R.id.foodmenubtn:
+                infobtn.setBackground(getDrawable(R.drawable.information));
+                menubtn.setBackground(getDrawable(R.drawable.menu_click));
+                reviewbtn.setBackground(getDrawable(R.drawable.review));
+
                 FragmentTransaction tr2 = fragmentManager.beginTransaction();
                 FoodMenu fm = new FoodMenu();
                 tr2.replace(R.id.foodframe, fm, "FoodMenu");
                 tr2.commit();
                 break;
             case R.id.foodreviewbtn:
+                infobtn.setBackground(getDrawable(R.drawable.information));
+                menubtn.setBackground(getDrawable(R.drawable.menu));
+                reviewbtn.setBackground(getDrawable(R.drawable.review_click));
+
                 FragmentTransaction tr3 = fragmentManager.beginTransaction();
                 FoodReview fr = new FoodReview();
                 tr3.replace(R.id.foodframe, fr, "FoodReview");
