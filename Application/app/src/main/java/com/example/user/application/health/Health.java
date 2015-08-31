@@ -1,6 +1,7 @@
 package com.example.user.application.health;
 
 import java.io.Serializable;
+import java.util.Random;
 
 /**
  * Created by user on 15. 8. 15.
@@ -11,11 +12,20 @@ public class Health implements Serializable {
     private String clcdnm;
     private String telno;
     private int icon;
+    private float star;
     private int cnt;
     private double xPos;
     private double yPos;
 
     public Health() {
+        this.name = null;
+        this.addr = null;
+        this.clcdnm = null;
+        this.telno = null;
+        this.icon = 0;
+        this.cnt = 0;
+        this.xPos = 0;
+        this.yPos = 0;
     }
 
     public Health(int icon, String name, String addr, String clcdnm, String telno, double xPos, double yPos) {
@@ -25,8 +35,18 @@ public class Health implements Serializable {
         this.clcdnm = clcdnm;
         this.telno = telno;
         this.cnt = 0;
-        this.xPos = 0;
-        this.yPos = 0;
+        this.xPos = xPos;
+        this.yPos = yPos;
+        Random r = new Random();
+        this.star = (r.nextFloat() % 5.0f) * 10;
+    }
+
+    public void setStar(float star) {
+        this.star = star;
+    }
+
+    public float getStar() {
+        return star;
     }
 
     public int getCnt() {

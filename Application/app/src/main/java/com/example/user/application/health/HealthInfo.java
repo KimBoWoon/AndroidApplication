@@ -106,7 +106,7 @@ public class HealthInfo extends Activity {
         @Nullable
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View root = inflater.inflate(R.layout.hospital_info, container, false);
+            View root = inflater.inflate(R.layout.health_info, container, false);
 
             Intent intent = getIntent();
             hospital = (Health) intent.getSerializableExtra("Item");

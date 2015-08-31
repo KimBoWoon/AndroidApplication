@@ -39,7 +39,7 @@ public class PerformanceActivity extends Activity {
 
         listView = (ListView) findViewById(R.id.perlist);
         pro = (ProgressBar) findViewById(R.id.perpro);
-        listAdapter = new PerformanceList(this, R.layout.performance_list, persList);
+        listAdapter = new PerformanceList(this, R.layout.performance_item, persList);
 
 
         listView.setAdapter(listAdapter);

@@ -15,45 +15,6 @@
             android:visibility="gone" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/perimg"
-        android:layout_width="250px"
-        android:layout_height="250px"
-        android:layout_alignParentLeft="true"
-        android:layout_marginRight="10px" />
-
-    <TextView
-        android:id="@+id/pername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/perimg"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/peraddr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@id/perimg"
-        android:textSize="13sp" />
-
-    <TextView
-        android:id="@+id/perclcdnm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@id/peraddr"
-        android:layout_toRightOf="@id/perimg"
-        android:textSize="13sp" />
-
-    <TextView
-        android:id="@+id/pertelno"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:textSize="13sp" />
-
     <ListView
         android:id="@+id/perlist"
         android:layout_width="match_parent"

@@ -38,7 +38,7 @@ public class FoodActivity extends Activity {
         setContentView(R.layout.food_list);
         listView = (ListView) findViewById(R.id.foodlist);
         pro = (ProgressBar) findViewById(R.id.foodpro);
-        listAdapter = new FoodList(this, R.layout.food_list, foodList);
+        listAdapter = new FoodList(this, R.layout.food_item, foodList);
 
         new FoodThread(FoodActivity.this, foodList).execute();
         listView.setAdapter(listAdapter);

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.user.application.R;
@@ -61,6 +62,9 @@ public class BeautyList extends BaseAdapter {
 
         TextView clcdnm = (TextView) convertView.findViewById(R.id.beautyclcdnm);
         clcdnm.setText(beautysList.get(position).getClcdnm());
+
+        RatingBar star = (RatingBar) convertView.findViewById(R.id.beautyrating);
+        star.setRating(beautysList.get(position).getStar());
 
         return convertView;
     }

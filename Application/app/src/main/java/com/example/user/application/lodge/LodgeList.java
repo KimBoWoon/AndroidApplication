@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.user.application.R;
@@ -61,6 +62,9 @@ public class LodgeList extends BaseAdapter {
 
         TextView clcdnm = (TextView) convertView.findViewById(R.id.lodgeclcdnm);
         clcdnm.setText(lodgesList.get(position).getClcdnm());
+
+        RatingBar star = (RatingBar) convertView.findViewById(R.id.lodgerating);
+        star.setRating(lodgesList.get(position).getStar());
 
         return convertView;
     }

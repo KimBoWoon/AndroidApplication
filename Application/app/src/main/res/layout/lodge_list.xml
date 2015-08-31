@@ -15,45 +15,6 @@
             android:visibility="gone" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/lodgeimg"
-        android:layout_width="250px"
-        android:layout_height="250px"
-        android:layout_alignParentLeft="true"
-        android:layout_marginRight="10px" />
-
-    <TextView
-        android:id="@+id/lodgename"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/lodgeimg"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/lodgeaddr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@id/lodgeimg"
-        android:textSize="13sp" />
-
-    <TextView
-        android:id="@+id/lodgeclcdnm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@id/lodgeaddr"
-        android:layout_toRightOf="@id/lodgeimg"
-        android:textSize="13sp" />
-
-    <TextView
-        android:id="@+id/lodgetelno"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:textSize="13sp" />
-
     <ListView
         android:id="@+id/lodgelist"
         android:layout_width="match_parent"

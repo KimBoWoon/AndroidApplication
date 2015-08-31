@@ -9,14 +9,14 @@
         android:gravity="center">
 
         <ProgressBar
-            android:id="@+id/beautypro"
+            android:id="@+id/hospitalpro"
             android:layout_width="150px"
             android:layout_height="150px"
             android:visibility="gone" />
     </LinearLayout>
 
     <ListView
-        android:id="@+id/beautylist"
+        android:id="@+id/healthlist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
 </RelativeLayout>

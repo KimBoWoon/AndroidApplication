@@ -40,7 +40,7 @@ public class LodgeActivity extends Activity {
 
         listView = (ListView) findViewById(R.id.lodgelist);
         pro = (ProgressBar) findViewById(R.id.lodgepro);
-        listAdapter = new LodgeList(this, R.layout.lodge_list, lodgesList);
+        listAdapter = new LodgeList(this, R.layout.lodge_item, lodgesList);
 
 
         listView.setAdapter(listAdapter);

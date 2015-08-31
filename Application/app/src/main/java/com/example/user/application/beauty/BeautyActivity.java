@@ -39,7 +39,7 @@ public class BeautyActivity extends Activity {
 
         listView = (ListView) findViewById(R.id.beautylist);
         pro = (ProgressBar) findViewById(R.id.beautypro);
-        listAdapter = new BeautyList(this, R.layout.beauty_list, beautyList);
+        listAdapter = new BeautyList(this, R.layout.beauty_item, beautyList);
 
 
         listView.setAdapter(listAdapter);

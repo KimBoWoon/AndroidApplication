@@ -1,6 +1,7 @@
 package com.example.user.application.performance;
 
 import java.io.Serializable;
+import java.util.Random;
 
 /**
  * Created by user on 15. 8. 15.
@@ -14,6 +15,7 @@ public class Performance implements Serializable {
     private int icon;
     private double xPos;
     private double yPos;
+    private float star;
 
     public Performance() {
         this.name = null;
@@ -24,6 +26,7 @@ public class Performance implements Serializable {
         this.icon = 0;
         this.xPos = 0;
         this.yPos = 0;
+        this.star = 0;
     }
 
     public Performance(int icon, String name, String addr, String clcdnm, String telno, String cinema, double xPos, double yPos) {
@@ -35,6 +38,16 @@ public class Performance implements Serializable {
         this.cinema = cinema;
         this.xPos = xPos;
         this.yPos = yPos;
+        Random r = new Random();
+        this.star = (r.nextFloat() % 5.0f) * 10;
+    }
+
+    public void setStar(float star) {
+        this.star = star;
+    }
+
+    public float getStar() {
+        return star;
     }
 
     public String getCinema() {

@@ -1,6 +1,7 @@
 package com.example.user.application.beauty;
 
 import java.io.Serializable;
+import java.util.Random;
 
 /**
  * Created by user on 15. 8. 15.
@@ -12,6 +13,7 @@ public class Beauty implements Serializable {
     private String telno;
     private String cinema;
     private int icon;
+    private float star;
     private double xPos;
     private double yPos;
 
@@ -24,6 +26,7 @@ public class Beauty implements Serializable {
         this.icon = 0;
         this.xPos = 0;
         this.yPos = 0;
+        this.star = 0;
     }
 
     public Beauty(int icon, String name, String addr, String clcdnm, String telno, String cinema, double xPos, double yPos) {
@@ -35,6 +38,16 @@ public class Beauty implements Serializable {
         this.cinema = cinema;
         this.xPos = xPos;
         this.yPos = yPos;
+        Random r = new Random();
+        this.star = (r.nextFloat() % 5.0f) * 10;
+    }
+
+    public float getStar() {
+        return star;
+    }
+
+    public void setStar(float star) {
+        this.star = star;
     }
 
     public String getCinema() {

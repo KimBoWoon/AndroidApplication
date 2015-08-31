@@ -1,6 +1,7 @@
 package com.example.user.application.lodge;
 
 import java.io.Serializable;
+import java.util.Random;
 
 /**
  * Created by user on 15. 8. 15.
@@ -14,8 +15,18 @@ public class Lodge implements Serializable {
     private int cnt;
     private double xPos;
     private double yPos;
+    private float star;
 
     public Lodge() {
+        this.icon = 0;
+        this.name = null;
+        this.addr = null;
+        this.clcdnm = null;
+        this.telno = null;
+        this.cnt = 0;
+        this.xPos = 0;
+        this.yPos = 0;
+        this.star = 0;
     }
 
     public Lodge(int icon, String name, String addr, String clcdnm, String telno, double xPos, double yPos) {
@@ -25,8 +36,18 @@ public class Lodge implements Serializable {
         this.clcdnm = clcdnm;
         this.telno = telno;
         this.cnt = 0;
-        this.xPos = 0;
-        this.yPos = 0;
+        this.xPos = xPos;
+        this.yPos = yPos;
+        Random r = new Random();
+        this.star = (r.nextFloat() % 5.0f) * 10;
+    }
+
+    public float getStar() {
+        return star;
+    }
+
+    public void setStar(float star) {
+        this.star = star;
     }
 
     public int getCnt() {

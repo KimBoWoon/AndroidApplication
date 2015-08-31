@@ -63,7 +63,6 @@ public class FoodList extends BaseAdapter {
 
         RatingBar star = (RatingBar) convertView.findViewById(R.id.foodrating);
         star.setRating(foodsList.get(position).getStar());
-        star.setIsIndicator(true);
 
         return convertView;
     }

@@ -1,11 +1,13 @@
 package com.example.user.application.health;
 
 import android.content.Context;
+import android.media.Rating;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.user.application.R;
@@ -63,6 +65,9 @@ public class HealthList extends BaseAdapter {
 
         TextView clcdnm = (TextView) convertView.findViewById(R.id.hospitalclcdnm);
         clcdnm.setText(hospitalsList.get(position).getClcdnm());
+
+        RatingBar star = (RatingBar) convertView.findViewById(R.id.healthrating);
+        star.setRating(hospitalsList.get(position).getStar());
 
         return convertView;
     }

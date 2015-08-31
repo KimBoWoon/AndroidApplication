@@ -35,11 +35,11 @@ public class HealthActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.hospital_list);
+        setContentView(R.layout.health_list);
 
         listView = (ListView) findViewById(R.id.healthlist);
         pro = (ProgressBar) findViewById(R.id.hospitalpro);
-        listAdapter = new HealthList(this, R.layout.hospital_list, hospitalList);
+        listAdapter = new HealthList(this, R.layout.health_item, hospitalList);
 
 
         listView.setAdapter(listAdapter);
