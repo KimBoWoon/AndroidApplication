@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.user.application.R;
@@ -16,13 +17,11 @@ import java.util.ArrayList;
  * Created by user on 15. 8. 15.
  */
 public class FoodList extends BaseAdapter {
-    Context maincon;
-    LayoutInflater inflater;
-    ArrayList<Food> foodsList;
-    int layout;
+    private LayoutInflater inflater;
+    private ArrayList<Food> foodsList;
+    private int layout;
 
     public FoodList(Context context, int layout, ArrayList<Food> foodsList) {
-        this.maincon = context;
         this.layout = layout;
         this.foodsList = foodsList;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -61,6 +60,10 @@ public class FoodList extends BaseAdapter {
 
         TextView clcdnm = (TextView) convertView.findViewById(R.id.foodclcdnm);
         clcdnm.setText(foodsList.get(position).getClcdnm());
+
+        RatingBar star = (RatingBar) convertView.findViewById(R.id.foodrating);
+        star.setRating(foodsList.get(position).getStar());
+        star.setIsIndicator(true);
 
         return convertView;
     }

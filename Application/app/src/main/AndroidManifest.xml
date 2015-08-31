@@ -8,8 +8,8 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".mainacvitity.MainActivity"
-            android:label="@string/app_name">
+            android:name=".splash.SplashActivity"
+            android:theme="@style/SplashThema">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,32 +17,35 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".mainacvitity.MainActivity"
+            android:label="@string/app_name" />
+        <activity
             android:name=".food.FoodActivity"
-            android:label="@string/foodact"></activity>
+            android:label="@string/foodact" />
         <activity
             android:name=".lodge.LodgeActivity"
-            android:label="@string/lodgeact"></activity>
+            android:label="@string/lodgeact" />
         <activity
             android:name=".health.HealthActivity"
-            android:label="@string/healthact"></activity>
+            android:label="@string/healthact" />
         <activity
             android:name=".performance.PerformanceActivity"
-            android:label="@string/performanceact"></activity>
+            android:label="@string/performanceact" />
         <activity
             android:name=".beauty.BeautyActivity"
-            android:label="@string/beautyact"></activity>
+            android:label="@string/beautyact" />
         <activity
             android:name=".course.CourseActivity"
-            android:label="@string/courseact"></activity>
+            android:label="@string/courseact" />
         <activity
             android:name=".maps.MapActivity"
-            android:label="지도"></activity>
-        <activity
-            android:name=".health.HospitalInfo"
-            android:label="병원"></activity>
+            android:label="지도" />
         <activity
             android:name=".food.FoodInfo"
             android:label="맛집" />
+        <activity
+            android:name=".health.HealthInfo"
+            android:label="건강" />
         <activity
             android:name=".lodge.LodgeInfo"
             android:label="숙박" />
@@ -55,7 +58,6 @@
         <activity
             android:name=".camera.MyCamera"
             android:label="카메라" />
-        <activity android:name=".splash.SplashActivity" />
         <activity
             android:name=".mypage.MyPageActivity"
             android:label="개인정보" />
@@ -74,12 +76,12 @@
             android:value="@string/google_maps_key" />
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature android:name="android.hardware.camera" />

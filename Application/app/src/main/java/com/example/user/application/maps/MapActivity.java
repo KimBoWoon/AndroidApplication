@@ -10,14 +10,19 @@ import android.support.v4.app.FragmentActivity;
 
 import com.example.user.application.R;
 import com.example.user.application.beauty.Beauty;
+import com.example.user.application.beauty.BeautyActivity;
 import com.example.user.application.beauty.BeautyParser;
 import com.example.user.application.food.Food;
+import com.example.user.application.food.FoodActivity;
 import com.example.user.application.food.FoodParser;
 import com.example.user.application.health.Health;
+import com.example.user.application.health.HealthActivity;
 import com.example.user.application.health.HealthParser;
 import com.example.user.application.lodge.Lodge;
+import com.example.user.application.lodge.LodgeActivity;
 import com.example.user.application.lodge.LodgeParser;
 import com.example.user.application.performance.Performance;
+import com.example.user.application.performance.PerformanceActivity;
 import com.example.user.application.performance.PerformanceParser;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -148,17 +153,11 @@ public class MapActivity extends FragmentActivity {
         mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
         mMap.addMarker(new MarkerOptions().position(new LatLng(gps.getLatitude(), gps.getLongitude())).title("MY"));
 
-        food = new ArrayList<Food>();
-        lodge = new ArrayList<Lodge>();
-        beauty = new ArrayList<Beauty>();
-        hos = new ArrayList<Health>();
-        per = new ArrayList<Performance>();
-
-        food = new FoodParser().jsonParser();
-        lodge = new LodgeParser().jsonParser();
-        beauty = new BeautyParser().jsonParser();
-        hos = new HealthParser().jsonParser();
-        per = new PerformanceParser().jsonParser();
+        food = FoodActivity.foodList;
+        lodge = LodgeActivity.lodgesList;
+        beauty = BeautyActivity.beautyList;
+        hos = HealthActivity.hospitalList;
+        per = PerformanceActivity.persList;
 
         //lat 위도 lon경도 37.5062883 127.0248064
 //        double lat1 = 37.5046343;

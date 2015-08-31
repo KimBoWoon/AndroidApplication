@@ -46,7 +46,6 @@ public class MainActivity extends Activity {
                 case R.id.health:
                     Intent healthIntent = new Intent(MainActivity.this, HealthActivity.class);
                     startActivity(healthIntent);
-//                    overridePendingTransition(R.anim.abc_slide_in_top, R.anim.abc_slide_in_bottom);
                     break;
                 case R.id.performance:
                     Intent performanceIntent = new Intent(MainActivity.this, PerformanceActivity.class);
@@ -84,8 +83,6 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        startActivity(new Intent(this, SplashActivity.class));
-//        overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
