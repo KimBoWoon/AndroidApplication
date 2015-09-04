@@ -14,12 +14,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.user.application.R;
+import com.example.user.application.datamanager.Data;
 
 /**
  * Created by user on 15. 8. 20.
  */
 public class LodgeInfo extends Activity {
-    private Lodge lodge;
+    private Data lodge;
     private TextView name;
     private TextView time;
     private TextView useInfo;
@@ -54,7 +55,7 @@ public class LodgeInfo extends Activity {
         switch (v.getId()) {
             case R.id.lodgeinfobtn:
                 infobtn.setBackground(getDrawable(R.drawable.information_click));
-                menubtn.setBackground(getDrawable(R.drawable.menu));
+                menubtn.setBackground(getDrawable(R.drawable.charge));
                 reviewbtn.setBackground(getDrawable(R.drawable.review));
                 FragmentTransaction tr1 = fragmentManager.beginTransaction();
                 LodgeInfomation li = new LodgeInfomation();
@@ -63,7 +64,7 @@ public class LodgeInfo extends Activity {
                 break;
             case R.id.lodgemenubtn:
                 infobtn.setBackground(getDrawable(R.drawable.information));
-                menubtn.setBackground(getDrawable(R.drawable.menu_click));
+                menubtn.setBackground(getDrawable(R.drawable.charge_click));
                 reviewbtn.setBackground(getDrawable(R.drawable.review));
                 FragmentTransaction tr2 = fragmentManager.beginTransaction();
                 LodgeUse lm = new LodgeUse();
@@ -72,7 +73,7 @@ public class LodgeInfo extends Activity {
                 break;
             case R.id.lodgereviewbtn:
                 infobtn.setBackground(getDrawable(R.drawable.information));
-                menubtn.setBackground(getDrawable(R.drawable.menu));
+                menubtn.setBackground(getDrawable(R.drawable.charge));
                 reviewbtn.setBackground(getDrawable(R.drawable.review_click));
                 FragmentTransaction tr3 = fragmentManager.beginTransaction();
                 LodgeReview lr = new LodgeReview();
@@ -109,7 +110,7 @@ public class LodgeInfo extends Activity {
             View root = inflater.inflate(R.layout.lodge_info, container, false);
 
             Intent intent = getIntent();
-            lodge = (Lodge) intent.getSerializableExtra("Item");
+            lodge = (Data) intent.getSerializableExtra("Item");
 
             name = (TextView) root.findViewById(R.id.lodgeinfoname);
             name.setText(lodge.getName());

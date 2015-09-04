@@ -14,12 +14,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.user.application.R;
+import com.example.user.application.datamanager.Data;
 
 /**
  * Created by user on 15. 8. 16.
  */
 public class HealthInfo extends Activity {
-    private Health hospital;
+    private Data hospital;
     private TextView name;
     private TextView time;
     private TextView useInfo;
@@ -54,7 +55,7 @@ public class HealthInfo extends Activity {
         switch (v.getId()) {
             case R.id.healthinfobtn:
                 infobtn.setBackground(getDrawable(R.drawable.information_click));
-                menubtn.setBackground(getDrawable(R.drawable.menu));
+                menubtn.setBackground(getDrawable(R.drawable.charge));
                 reviewbtn.setBackground(getDrawable(R.drawable.review));
                 FragmentTransaction tr1 = fragmentManager.beginTransaction();
                 HealthInfomation hi = new HealthInfomation();
@@ -63,7 +64,7 @@ public class HealthInfo extends Activity {
                 break;
             case R.id.healthmenubtn:
                 infobtn.setBackground(getDrawable(R.drawable.information));
-                menubtn.setBackground(getDrawable(R.drawable.menu_click));
+                menubtn.setBackground(getDrawable(R.drawable.charge_click));
                 reviewbtn.setBackground(getDrawable(R.drawable.review));
                 FragmentTransaction tr2 = fragmentManager.beginTransaction();
                 HealthUse hm = new HealthUse();
@@ -72,7 +73,7 @@ public class HealthInfo extends Activity {
                 break;
             case R.id.healthreviewbtn:
                 infobtn.setBackground(getDrawable(R.drawable.information));
-                menubtn.setBackground(getDrawable(R.drawable.menu));
+                menubtn.setBackground(getDrawable(R.drawable.charge));
                 reviewbtn.setBackground(getDrawable(R.drawable.review_click));
                 FragmentTransaction tr3 = fragmentManager.beginTransaction();
                 HealthReview hr = new HealthReview();
@@ -109,7 +110,7 @@ public class HealthInfo extends Activity {
             View root = inflater.inflate(R.layout.health_info, container, false);
 
             Intent intent = getIntent();
-            hospital = (Health) intent.getSerializableExtra("Item");
+            hospital = (Data) intent.getSerializableExtra("Item");
 
             name = (TextView) root.findViewById(R.id.hosinfoname);
             name.setText(hospital.getName());

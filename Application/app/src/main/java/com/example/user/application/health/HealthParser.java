@@ -1,5 +1,7 @@
 package com.example.user.application.health;
 
+import com.example.user.application.datamanager.Data;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,15 +23,15 @@ public class HealthParser {
             "{\"clCdNm\":\"상급종합\",\"telno\":\"02-2626-1114\",\"XPos\":\"126.8848701\",\"YPos\":\"37.492052\",\"yadmNm\":\"고려대의과대학부속구로병원\",\"addr\":\"서울특별시 구로구 구로동로 148 (구로동)\"}," +
             "{\"clCdNm\":\"상급종합\",\"telno\":\"031-412-5114\",\"XPos\":\"126.8249033\",\"YPos\":\"37.3185144\",\"yadmNm\":\"고려대학교의과대학부속안산병원\",\"addr\":\"경기도 안산시 단원구 적금로 123 (고잔동)\"}]";
 
-    public ArrayList<Health> jsonParser() {
-        ArrayList<Health> list = new ArrayList<Health>();
+    public ArrayList<Data> jsonParser() {
+        ArrayList<Data> list = new ArrayList<Data>();
         try {
             //JSON String으로 부터 JSONArray 생성. [](대괄호)
             JSONArray jArr = new JSONArray(json);
             for (int i = 0; i < jArr.length(); i++) {
                 //JSONArray에서 i번째 해당하는 JSONObject를 추출.
                 JSONObject jObj = jArr.getJSONObject(i);
-                Health hospital = new Health();
+                Data hospital = new Data();
                 //각 이름("id"/"tel")에 해당하는 값을 추출.
                 hospital.setName(jObj.getString("yadmNm"));
                 hospital.setAddr(jObj.getString("addr"));

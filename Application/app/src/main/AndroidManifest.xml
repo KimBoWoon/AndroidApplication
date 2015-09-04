@@ -54,7 +54,7 @@
             android:label="미용" />
         <activity
             android:name=".performance.PerformanceInfo"
-            android:label="극장" />
+            android:label="공연" />
         <activity
             android:name=".camera.MyCamera"
             android:label="카메라" />
@@ -63,10 +63,13 @@
             android:label="개인정보" />
         <activity
             android:name=".spectacle.SpectacleActivity"
-            android:label="a" />
+            android:label="볼거리" />
         <activity
             android:name=".event.EventActivity"
             android:label="이벤트" />
+        <activity
+            android:name=".search.SearchActivity"
+            android:label="검색" />
 
         <meta-data
             android:name="com.google.android.gms.version"

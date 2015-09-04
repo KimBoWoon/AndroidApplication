@@ -4,19 +4,18 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.example.user.application.R;
+import com.example.user.application.datamanager.Data;
 
 import java.util.ArrayList;
 
 /**
  * Created by user on 15. 8. 16.
  */
-public class BeautyThread extends AsyncTask<ArrayList<Beauty>, Void, ArrayList<Beauty>> {
-    ArrayList<Beauty> beautyList;
-    Context context;
+public class BeautyThread extends AsyncTask<ArrayList<Data>, Void, ArrayList<Data>> {
+    ArrayList<Data> beautyList;
 
-    public BeautyThread(Context context, ArrayList<Beauty> beautyList) {
+    public BeautyThread(ArrayList<Data> beautyList) {
         super();
-        this.context = context;
         this.beautyList = beautyList;
     }
 
@@ -26,7 +25,7 @@ public class BeautyThread extends AsyncTask<ArrayList<Beauty>, Void, ArrayList<B
     }
 
     @Override
-    protected void onPostExecute(ArrayList<Beauty> foods) {
+    protected void onPostExecute(ArrayList<Data> foods) {
         super.onPostExecute(foods);
     }
 
@@ -36,22 +35,22 @@ public class BeautyThread extends AsyncTask<ArrayList<Beauty>, Void, ArrayList<B
     }
 
     @Override
-    protected void onCancelled(ArrayList<Beauty> foods) {
+    protected void onCancelled(ArrayList<Data> foods) {
         super.onCancelled(foods);
     }
 
     @Override
-    protected ArrayList<Beauty> doInBackground(ArrayList<Beauty>... params) {
+    protected ArrayList<Data> doInBackground(ArrayList<Data>... params) {
         BeautyParser parser = new BeautyParser();
-        ArrayList<Beauty> DTOList = null;
+        ArrayList<Data> DTOList = null;
         try {
             DTOList = parser.jsonParser();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        for (Beauty entity : DTOList) {
-            beautyList.add(new Beauty(R.drawable.nonregistered, entity.getName(), entity.getAddr(), entity.getClcdnm(), entity.getTelno(), entity.getCinema(), entity.getxPos(), entity.getyPos()));
+        for (Data entity : DTOList) {
+            beautyList.add(new Data(R.drawable.nonregistered, entity.getName(), entity.getAddr(), entity.getClcdnm(), entity.getTelno(), entity.getCinema(), entity.getxPos(), entity.getyPos()));
         }
         return beautyList;
     }

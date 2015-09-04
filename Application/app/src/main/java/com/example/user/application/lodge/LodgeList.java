@@ -10,6 +10,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.user.application.R;
+import com.example.user.application.datamanager.Data;
 
 import java.util.ArrayList;
 
@@ -19,10 +20,10 @@ import java.util.ArrayList;
 public class LodgeList extends BaseAdapter {
     Context maincon;
     LayoutInflater inflater;
-    ArrayList<Lodge> lodgesList;
+    ArrayList<Data> lodgesList;
     int layout;
 
-    public LodgeList(Context context, int layout, ArrayList<Lodge> lodgesList) {
+    public LodgeList(Context context, int layout, ArrayList<Data> lodgesList) {
         this.maincon = context;
         this.layout = layout;
         this.lodgesList = lodgesList;
@@ -51,19 +52,22 @@ public class LodgeList extends BaseAdapter {
         if (convertView == null) {
             convertView = inflater.inflate(layout, parent, false);
         }
-        ImageView img = (ImageView) convertView.findViewById(R.id.lodgeimg);
+        ImageView img = (ImageView) convertView.findViewById(R.id.listimg);
         img.setImageResource(lodgesList.get(position).getIcon());
 
-        TextView name = (TextView) convertView.findViewById(R.id.lodgename);
+        TextView name = (TextView) convertView.findViewById(R.id.listname);
         name.setText(lodgesList.get(position).getName());
 
-        TextView addr = (TextView) convertView.findViewById(R.id.lodgeaddr);
+        TextView addr = (TextView) convertView.findViewById(R.id.listaddr);
         addr.setText(lodgesList.get(position).getAddr());
 
-        TextView clcdnm = (TextView) convertView.findViewById(R.id.lodgeclcdnm);
+        TextView clcdnm = (TextView) convertView.findViewById(R.id.listclcdnm);
         clcdnm.setText(lodgesList.get(position).getClcdnm());
 
-        RatingBar star = (RatingBar) convertView.findViewById(R.id.lodgerating);
+        ImageView order = (ImageView) convertView.findViewById(R.id.listorder);
+//        order.setImageResource(lodgesList.get(position).getIcon());
+
+        RatingBar star = (RatingBar) convertView.findViewById(R.id.listrating);
         star.setRating(lodgesList.get(position).getStar());
 
         return convertView;

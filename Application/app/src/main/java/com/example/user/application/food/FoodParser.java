@@ -1,5 +1,7 @@
 package com.example.user.application.food;
 
+import com.example.user.application.datamanager.Data;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,15 +23,15 @@ public class FoodParser {
             "{\"주된음식\":\"샤브샤브, 생등심\",\"연락처\":\"02-502-8384\",\"경도\":\"126.9920458\",\"위도\":\"37.4277596\",\"상호명\":\"서라벌\",\"소재지도로명주소\":\"경기도 과천시  별양상가로 2 (별양동)\"}," +
             "{\"주된음식\":\"사시미, 초밥\",\"연락처\":\"02-503-1616\",\"경도\":\"126.9920458\",\"위도\":\"37.4277596\",\"상호명\":\"청도일식\",\"소재지도로명주소\":\"경기도 과천시  별양상가로 2 (별양동)\"}]";
 
-    public ArrayList<Food> jsonParser() {
-        ArrayList<Food> list = new ArrayList<Food>();
+    public ArrayList<Data> jsonParser() {
+        ArrayList<Data> list = new ArrayList<Data>();
         try {
             //JSON String으로 부터 JSONArray 생성. [](대괄호)
             JSONArray jArr = new JSONArray(json);
             for (int i = 0; i < jArr.length(); i++) {
                 //JSONArray에서 i번째 해당하는 JSONObject를 추출.
                 JSONObject jObj = jArr.getJSONObject(i);
-                Food food = new Food();
+                Data food = new Data();
                 //각 이름("id"/"tel")에 해당하는 값을 추출.
                 food.setName(jObj.getString("상호명"));
                 food.setAddr(jObj.getString("소재지도로명주소"));

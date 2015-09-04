@@ -4,19 +4,18 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.example.user.application.R;
+import com.example.user.application.datamanager.Data;
 
 import java.util.ArrayList;
 
 /**
  * Created by user on 15. 8. 16.
  */
-public class LodgeThread extends AsyncTask<ArrayList<Lodge>, Void, ArrayList<Lodge>> {
-    private ArrayList<Lodge> lodgesList;
-    private Context context;
+public class LodgeThread extends AsyncTask<ArrayList<Data>, Void, ArrayList<Data>> {
+    private ArrayList<Data> lodgesList;
 
-    public LodgeThread(Context context, ArrayList<Lodge> lodgesList) {
+    public LodgeThread(ArrayList<Data> lodgesList) {
         super();
-        this.context = context;
         this.lodgesList = lodgesList;
     }
 
@@ -26,7 +25,7 @@ public class LodgeThread extends AsyncTask<ArrayList<Lodge>, Void, ArrayList<Lod
     }
 
     @Override
-    protected void onPostExecute(ArrayList<Lodge> lodges) {
+    protected void onPostExecute(ArrayList<Data> lodges) {
         super.onPostExecute(lodges);
     }
 
@@ -36,22 +35,22 @@ public class LodgeThread extends AsyncTask<ArrayList<Lodge>, Void, ArrayList<Lod
     }
 
     @Override
-    protected void onCancelled(ArrayList<Lodge> lodges) {
+    protected void onCancelled(ArrayList<Data> lodges) {
         super.onCancelled(lodges);
     }
 
     @Override
-    protected ArrayList<Lodge> doInBackground(ArrayList<Lodge>... params) {
+    protected ArrayList<Data> doInBackground(ArrayList<Data>... params) {
         LodgeParser parser = new LodgeParser();
-        ArrayList<Lodge> DTOList = null;
+        ArrayList<Data> DTOList = null;
         try {
             DTOList = parser.jsonParser();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        for (Lodge entity : DTOList) {
-            lodgesList.add(new Lodge(R.drawable.nonregistered, entity.getName(), entity.getAddr(), entity.getClcdnm(), entity.getTelno(), entity.getxPos(), entity.getyPos()));
+        for (Data entity : DTOList) {
+            lodgesList.add(new Data(R.drawable.nonregistered, entity.getName(), entity.getAddr(), entity.getClcdnm(), entity.getTelno(), entity.getxPos(), entity.getyPos()));
         }
         return lodgesList;
     }

@@ -15,39 +15,20 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.user.application.R;
-import com.example.user.application.beauty.Beauty;
-import com.example.user.application.beauty.BeautyActivity;
 import com.example.user.application.beauty.BeautyList;
-import com.example.user.application.food.Food;
-import com.example.user.application.food.FoodActivity;
+import com.example.user.application.datamanager.DataManager;
 import com.example.user.application.food.FoodList;
-import com.example.user.application.health.Health;
-import com.example.user.application.health.HealthActivity;
 import com.example.user.application.health.HealthList;
-import com.example.user.application.lodge.Lodge;
-import com.example.user.application.lodge.LodgeActivity;
 import com.example.user.application.lodge.LodgeList;
-import com.example.user.application.performance.Performance;
-import com.example.user.application.performance.PerformanceActivity;
 import com.example.user.application.performance.PerformanceList;
-
-import java.util.ArrayList;
 
 /**
  * Created by user on 15. 8. 12.
  */
 public class CourseActivity extends Activity {
-    public AdapterView.OnItemClickListener Click = new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            LinearLayout item = (LinearLayout) View.inflate(CourseActivity.this, R.layout.course_item, null);
-            LinearLayout itemSelect = (LinearLayout) findViewById(R.id.courselayout);
-            itemSelect.setGravity(Gravity.CENTER);
-            itemSelect.addView(item);
-        }
-    };
     private FragmentManager fragmentManager;
     private Fragment fragment;
+    private DataManager data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +38,7 @@ public class CourseActivity extends Activity {
     }
 
     public void init() {
+        data = DataManager.getInstance();
         fragmentManager = getFragmentManager();
         fragment = fragmentManager.findFragmentById(R.id.foodframe);
 
@@ -108,9 +90,9 @@ public class CourseActivity extends Activity {
         @Nullable
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View root = inflater.inflate(R.layout.food_list, container, false);
-            ListView listView = (ListView) root.findViewById(R.id.foodlist);
-            FoodList listAdapter = new FoodList(CourseActivity.this, R.layout.food_item, FoodActivity.foodList);
+            View root = inflater.inflate(R.layout.list_view, container, false);
+            ListView listView = (ListView) root.findViewById(R.id.listview);
+            FoodList listAdapter = new FoodList(CourseActivity.this, R.layout.list_item, data.getFood());
             listView.setAdapter(listAdapter);
             listView.setOnItemClickListener(Click);
             return root;
@@ -121,9 +103,9 @@ public class CourseActivity extends Activity {
         @Nullable
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View root = inflater.inflate(R.layout.health_list, container, false);
-            ListView listView = (ListView) root.findViewById(R.id.healthlist);
-            HealthList listAdapter = new HealthList(CourseActivity.this, R.layout.health_item, HealthActivity.hospitalList);
+            View root = inflater.inflate(R.layout.list_view, container, false);
+            ListView listView = (ListView) root.findViewById(R.id.listview);
+            HealthList listAdapter = new HealthList(CourseActivity.this, R.layout.list_item, data.getHealth());
             listView.setAdapter(listAdapter);
             listView.setOnItemClickListener(Click);
             return root;
@@ -134,9 +116,9 @@ public class CourseActivity extends Activity {
         @Nullable
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View root = inflater.inflate(R.layout.lodge_list, container, false);
-            ListView listView = (ListView) root.findViewById(R.id.lodgelist);
-            LodgeList listAdapter = new LodgeList(CourseActivity.this, R.layout.lodge_item, LodgeActivity.lodgesList);
+            View root = inflater.inflate(R.layout.list_view, container, false);
+            ListView listView = (ListView) root.findViewById(R.id.listview);
+            LodgeList listAdapter = new LodgeList(CourseActivity.this, R.layout.list_item, data.getLodge());
             listView.setAdapter(listAdapter);
             listView.setOnItemClickListener(Click);
             return root;
@@ -147,9 +129,9 @@ public class CourseActivity extends Activity {
         @Nullable
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View root = inflater.inflate(R.layout.performance_list, container, false);
-            ListView listView = (ListView) root.findViewById(R.id.perlist);
-            PerformanceList listAdapter = new PerformanceList(CourseActivity.this, R.layout.performance_item, PerformanceActivity.persList);
+            View root = inflater.inflate(R.layout.list_view, container, false);
+            ListView listView = (ListView) root.findViewById(R.id.listview);
+            PerformanceList listAdapter = new PerformanceList(CourseActivity.this, R.layout.list_item, data.getPerformance());
             listView.setAdapter(listAdapter);
             listView.setOnItemClickListener(Click);
             return root;
@@ -160,12 +142,22 @@ public class CourseActivity extends Activity {
         @Nullable
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View root = inflater.inflate(R.layout.beauty_list, container, false);
-            ListView listView = (ListView) root.findViewById(R.id.beautylist);
-            BeautyList listAdapter = new BeautyList(CourseActivity.this, R.layout.beauty_item, BeautyActivity.beautyList);
+            View root = inflater.inflate(R.layout.list_view, container, false);
+            ListView listView = (ListView) root.findViewById(R.id.listview);
+            BeautyList listAdapter = new BeautyList(CourseActivity.this, R.layout.list_item, data.getBeauty());
             listView.setAdapter(listAdapter);
             listView.setOnItemClickListener(Click);
             return root;
         }
     }
+
+    public AdapterView.OnItemClickListener Click = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            LinearLayout item = (LinearLayout) View.inflate(CourseActivity.this, R.layout.course_item, null);
+            LinearLayout itemSelect = (LinearLayout) findViewById(R.id.courselayout);
+            itemSelect.setGravity(Gravity.CENTER);
+            itemSelect.addView(item);
+        }
+    };
 }

@@ -14,12 +14,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.user.application.R;
+import com.example.user.application.datamanager.Data;
 
 /**
  * Created by user on 15. 8. 20.
  */
 public class PerformanceInfo extends Activity {
-    private Performance performance;
+    private Data performance;
     private TextView name;
     private TextView time;
     private TextView useInfo;
@@ -54,7 +55,7 @@ public class PerformanceInfo extends Activity {
         switch (v.getId()) {
             case R.id.perinfobtn:
                 infobtn.setBackground(getDrawable(R.drawable.information_click));
-                menubtn.setBackground(getDrawable(R.drawable.menu));
+                menubtn.setBackground(getDrawable(R.drawable.charge));
                 reviewbtn.setBackground(getDrawable(R.drawable.review));
                 FragmentTransaction tr1 = fragmentManager.beginTransaction();
                 PerformanceInfomation pi = new PerformanceInfomation();
@@ -63,7 +64,7 @@ public class PerformanceInfo extends Activity {
                 break;
             case R.id.permenubtn:
                 infobtn.setBackground(getDrawable(R.drawable.information));
-                menubtn.setBackground(getDrawable(R.drawable.menu_click));
+                menubtn.setBackground(getDrawable(R.drawable.charge_click));
                 reviewbtn.setBackground(getDrawable(R.drawable.review));
                 FragmentTransaction tr2 = fragmentManager.beginTransaction();
                 PerformanceMenu pm = new PerformanceMenu();
@@ -72,7 +73,7 @@ public class PerformanceInfo extends Activity {
                 break;
             case R.id.perreviewbtn:
                 infobtn.setBackground(getDrawable(R.drawable.information));
-                menubtn.setBackground(getDrawable(R.drawable.menu));
+                menubtn.setBackground(getDrawable(R.drawable.charge));
                 reviewbtn.setBackground(getDrawable(R.drawable.review_click));
                 FragmentTransaction tr3 = fragmentManager.beginTransaction();
                 PerformanceReview pr = new PerformanceReview();
@@ -110,7 +111,7 @@ public class PerformanceInfo extends Activity {
             View root = inflater.inflate(R.layout.performance_info, container, false);
 
             Intent intent = getIntent();
-            performance = (Performance) intent.getSerializableExtra("Item");
+            performance = (Data) intent.getSerializableExtra("Item");
 
             name = (TextView) root.findViewById(R.id.perinfoname);
             name.setText(performance.getName());

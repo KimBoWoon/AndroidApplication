@@ -9,6 +9,8 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.example.user.application.R;
+import com.example.user.application.datamanager.Data;
+import com.example.user.application.datamanager.DataManager;
 
 import java.util.ArrayList;
 
@@ -16,33 +18,35 @@ import java.util.ArrayList;
  * Created by user on 15. 8. 9.
  */
 public class PerformanceActivity extends Activity {
-    public static ArrayList<Performance> persList = new ArrayList<Performance>();
-    public AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Intent info = new Intent(PerformanceActivity.this, PerformanceInfo.class);
-            Performance per = new Performance(persList.get(position).getIcon(), persList.get(position).getName(),
-                    persList.get(position).getAddr(), persList.get(position).getClcdnm(),
-                    persList.get(position).getTelno(), persList.get(position).getCinema(), persList.get(position).getxPos(), persList.get(position).getyPos());
-            info.putExtra("Item", per);
-            startActivity(info);
-        }
-    };
+    private ArrayList<Data> perList;
     private ListView listView;
     private ProgressBar pro;
     private PerformanceList listAdapter;
+    private DataManager data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.performance_list);
-
-        listView = (ListView) findViewById(R.id.perlist);
-        pro = (ProgressBar) findViewById(R.id.perpro);
-        listAdapter = new PerformanceList(this, R.layout.performance_item, persList);
-
-
+        setContentView(R.layout.list_view);
+        data = DataManager.getInstance();
+        perList = data.getPerformance();
+        listView = (ListView) findViewById(R.id.listview);
+        pro = (ProgressBar) findViewById(R.id.listpro);
+        listAdapter = new PerformanceList(this, R.layout.list_item, perList);
         listView.setAdapter(listAdapter);
         listView.setOnItemClickListener(listener);
     }
+
+    public AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Intent info = new Intent(PerformanceActivity.this, PerformanceInfo.class);
+            Data per = new Data(perList.get(position).getIcon(), perList.get(position).getName(),
+                    perList.get(position).getAddr(), perList.get(position).getClcdnm(),
+                    perList.get(position).getTelno(), perList.get(position).getCinema(),
+                    perList.get(position).getxPos(), perList.get(position).getyPos());
+            info.putExtra("Item", per);
+            startActivity(info);
+        }
+    };
 }

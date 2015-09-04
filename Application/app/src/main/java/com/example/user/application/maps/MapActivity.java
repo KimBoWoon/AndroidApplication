@@ -9,21 +9,8 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
 import com.example.user.application.R;
-import com.example.user.application.beauty.Beauty;
-import com.example.user.application.beauty.BeautyActivity;
-import com.example.user.application.beauty.BeautyParser;
-import com.example.user.application.food.Food;
-import com.example.user.application.food.FoodActivity;
-import com.example.user.application.food.FoodParser;
-import com.example.user.application.health.Health;
-import com.example.user.application.health.HealthActivity;
-import com.example.user.application.health.HealthParser;
-import com.example.user.application.lodge.Lodge;
-import com.example.user.application.lodge.LodgeActivity;
-import com.example.user.application.lodge.LodgeParser;
-import com.example.user.application.performance.Performance;
-import com.example.user.application.performance.PerformanceActivity;
-import com.example.user.application.performance.PerformanceParser;
+import com.example.user.application.datamanager.Data;
+import com.example.user.application.datamanager.DataManager;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -37,52 +24,19 @@ import java.util.ArrayList;
  */
 public class MapActivity extends FragmentActivity {
 
-    LocationManager locationManager;
-    String provider;
-    GPSInfo gps;
-    Criteria criteria;
-    ArrayList<Health> hos;
-    ArrayList<Food> food;
-    ArrayList<Beauty> beauty;
-    ArrayList<Performance> per;
-    ArrayList<Lodge> lodge;
-    private GoogleMap mMap; // Might be null if Google Play services APK is not available.
+    private LocationManager locationManager;
+    private String provider;
+    private GPSInfo gps;
+    private Criteria criteria;
+    private ArrayList<Data> hos;
+    private ArrayList<Data> food;
+    private ArrayList<Data> beauty;
+    private ArrayList<Data> per;
+    private ArrayList<Data> lodge;
+    private GoogleMap mMap;
+    private DataManager data;
+    // Might be null if Google Play services APK is not available.
     //TextView statusText;
-    LocationListener mListener = new LocationListener() {
-        @Override
-        public void onLocationChanged(Location location) {
-            //mMap.clear();
-            mMap.addMarker(new MarkerOptions().position(new LatLng(location.getLatitude(), location.getLongitude())).title("Marker"));
-        }
-
-        @Override
-        public void onStatusChanged(String provider, int status, Bundle extras) {
-//            String text = "";
-//
-//            switch (status) {
-//                case LocationProvider.OUT_OF_SERVICE:
-//                    text = "서비스 사용 불가";
-//                    break;
-//                case LocationProvider.TEMPORARILY_UNAVAILABLE:
-//                    text = "일시적 사용 불가";
-//                    break;
-//                case LocationProvider.AVAILABLE:
-//                    text = "서비스 사용 가능";
-//                    break;
-//            }
-//            statusText.setText(provider + " 상태 " + text);
-        }
-
-        @Override
-        public void onProviderEnabled(String provider) {
-
-        }
-
-        @Override
-        public void onProviderDisabled(String provider) {
-
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +75,8 @@ public class MapActivity extends FragmentActivity {
      */
     private void setUpMapIfNeeded() {
         // Do a null check to confirm that we have not already instantiated the map.
+        data = DataManager.getInstance();
+
         if (mMap == null) {
             // Try to obtain the map from the SupportMapFragment.
             mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.googlemap)).getMap();
@@ -153,11 +109,11 @@ public class MapActivity extends FragmentActivity {
         mMap.animateCamera(CameraUpdateFactory.zoomTo(14));
         mMap.addMarker(new MarkerOptions().position(new LatLng(gps.getLatitude(), gps.getLongitude())).title("MY"));
 
-        food = FoodActivity.foodList;
-        lodge = LodgeActivity.lodgesList;
-        beauty = BeautyActivity.beautyList;
-        hos = HealthActivity.hospitalList;
-        per = PerformanceActivity.persList;
+        food = data.getFood();
+        lodge = data.getLodge();
+        beauty = data.getBeauty();
+        hos = data.getHealth();
+        per = data.getPerformance();
 
         //lat 위도 lon경도 37.5062883 127.0248064
 //        double lat1 = 37.5046343;
@@ -309,4 +265,40 @@ public class MapActivity extends FragmentActivity {
         }
         //mMap.addCircle(new CircleOptions().center(new LatLng(gps.getLatitude(), gps.getLongitude())).radius(100).strokeColor(Color.RED).fillColor(Color.BLUE));
     }
+
+    LocationListener mListener = new LocationListener() {
+        @Override
+        public void onLocationChanged(Location location) {
+            //mMap.clear();
+            mMap.addMarker(new MarkerOptions().position(new LatLng(location.getLatitude(), location.getLongitude())).title("Marker"));
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+//            String text = "";
+//
+//            switch (status) {
+//                case LocationProvider.OUT_OF_SERVICE:
+//                    text = "서비스 사용 불가";
+//                    break;
+//                case LocationProvider.TEMPORARILY_UNAVAILABLE:
+//                    text = "일시적 사용 불가";
+//                    break;
+//                case LocationProvider.AVAILABLE:
+//                    text = "서비스 사용 가능";
+//                    break;
+//            }
+//            statusText.setText(provider + " 상태 " + text);
+        }
+
+        @Override
+        public void onProviderEnabled(String provider) {
+
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
+
+        }
+    };
 }

@@ -10,23 +10,73 @@ import android.widget.Button;
 
 import com.example.user.application.R;
 import com.example.user.application.beauty.BeautyActivity;
-import com.example.user.application.beauty.BeautyThread;
 import com.example.user.application.camera.MyCamera;
 import com.example.user.application.course.CourseActivity;
+import com.example.user.application.datamanager.DataManager;
 import com.example.user.application.event.EventActivity;
 import com.example.user.application.food.FoodActivity;
-import com.example.user.application.food.FoodThread;
 import com.example.user.application.health.HealthActivity;
-import com.example.user.application.health.HealthThread;
 import com.example.user.application.lodge.LodgeActivity;
-import com.example.user.application.lodge.LodgeThread;
 import com.example.user.application.maps.MapActivity;
 import com.example.user.application.mypage.MyPageActivity;
 import com.example.user.application.performance.PerformanceActivity;
-import com.example.user.application.performance.PerformanceThread;
+import com.example.user.application.search.SearchActivity;
 import com.example.user.application.spectacle.SpectacleActivity;
 
 public class MainActivity extends Activity {
+    DataManager data;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        init();
+    }
+
+    public void init() {
+//        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//        StrictMode.setThreadPolicy(policy);
+
+        findViewById(R.id.food).setOnClickListener(onClick);
+        findViewById(R.id.lodge).setOnClickListener(onClick);
+        findViewById(R.id.health).setOnClickListener(onClick);
+        findViewById(R.id.performance).setOnClickListener(onClick);
+        findViewById(R.id.course).setOnClickListener(onClick);
+        findViewById(R.id.beauty).setOnClickListener(onClick);
+        findViewById(R.id.spectacle).setOnClickListener(onClick);
+        findViewById(R.id.event).setOnClickListener(onClick);
+        findViewById(R.id.homebtn).setOnClickListener(onClick);
+        findViewById(R.id.searchbtn).setOnClickListener(onClick);
+        findViewById(R.id.camerabtn).setOnClickListener(onClick);
+        findViewById(R.id.locabtn).setOnClickListener(onClick);
+        findViewById(R.id.mypagebtn).setOnClickListener(onClick);
+        findViewById(R.id.searchbtn).setOnClickListener(onClick);
+
+        data = DataManager.getInstance();
+        data.executeThread();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     Button.OnClickListener onClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -75,62 +125,13 @@ public class MainActivity extends Activity {
                     Intent mypageIntent = new Intent(MainActivity.this, MyPageActivity.class);
                     startActivity(mypageIntent);
                     break;
+                case R.id.searchbtn:
+                    Intent searchIntent = new Intent(MainActivity.this, SearchActivity.class);
+                    startActivity(searchIntent);
+                    break;
                 default:
                     break;
             }
         }
     };
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        init();
-    }
-
-    public void init() {
-//        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-//        StrictMode.setThreadPolicy(policy);
-
-        findViewById(R.id.food).setOnClickListener(onClick);
-        findViewById(R.id.lodge).setOnClickListener(onClick);
-        findViewById(R.id.health).setOnClickListener(onClick);
-        findViewById(R.id.performance).setOnClickListener(onClick);
-        findViewById(R.id.course).setOnClickListener(onClick);
-        findViewById(R.id.beauty).setOnClickListener(onClick);
-        findViewById(R.id.spectacle).setOnClickListener(onClick);
-        findViewById(R.id.event).setOnClickListener(onClick);
-        findViewById(R.id.homebtn).setOnClickListener(onClick);
-        findViewById(R.id.searchbtn).setOnClickListener(onClick);
-        findViewById(R.id.camerabtn).setOnClickListener(onClick);
-        findViewById(R.id.locabtn).setOnClickListener(onClick);
-        findViewById(R.id.mypagebtn).setOnClickListener(onClick);
-
-        new FoodThread(this, FoodActivity.foodList).execute();
-        new BeautyThread(this, BeautyActivity.beautyList).execute();
-        new HealthThread(this, HealthActivity.hospitalList).execute();
-        new LodgeThread(this, LodgeActivity.lodgesList).execute();
-        new PerformanceThread(this, PerformanceActivity.persList).execute();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }

@@ -1,5 +1,7 @@
 package com.example.user.application.beauty;
 
+import com.example.user.application.datamanager.Data;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,15 +23,15 @@ public class BeautyParser {
             "{\"clCdNm\":\"미용업(일반)\",\"telno\":\"정보없음\",\"XPos\":\"128.9949636\",\"YPos\":\"35.1964158\",\"yadmNm\":\"조수희미용실\",\"addr\":\"부산광역시 북구 구포동 1090번지\"}," +
             "{\"clCdNm\":\"미용업(일반)\",\"telno\":\"051-336-2427\",\"XPos\":\"129.0144856\",\"YPos\":\"35.2370402\",\"yadmNm\":\"금비헤어샵\",\"addr\":\"부산광역시 북구 화명동 1412번지 2호\"}]";
 
-    public ArrayList<Beauty> jsonParser() {
-        ArrayList<Beauty> list = new ArrayList<Beauty>();
+    public ArrayList<Data> jsonParser() {
+        ArrayList<Data> list = new ArrayList<Data>();
         try {
             //JSON String으로 부터 JSONArray 생성. [](대괄호)
             JSONArray jArr = new JSONArray(json);
             for (int i = 0; i < jArr.length(); i++) {
                 //JSONArray에서 i번째 해당하는 JSONObject를 추출.
                 JSONObject jObj = jArr.getJSONObject(i);
-                Beauty beauty = new Beauty();
+                Data beauty = new Data();
                 //각 이름("id"/"tel")에 해당하는 값을 추출.
                 beauty.setName(jObj.getString("yadmNm"));
                 beauty.setAddr(jObj.getString("addr"));

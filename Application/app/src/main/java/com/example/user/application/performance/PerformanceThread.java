@@ -4,19 +4,18 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.example.user.application.R;
+import com.example.user.application.datamanager.Data;
 
 import java.util.ArrayList;
 
 /**
  * Created by user on 15. 8. 16.
  */
-public class PerformanceThread extends AsyncTask<ArrayList<Performance>, Void, ArrayList<Performance>> {
-    ArrayList<Performance> perList;
-    Context context;
+public class PerformanceThread extends AsyncTask<ArrayList<Data>, Void, ArrayList<Data>> {
+    ArrayList<Data> perList;
 
-    public PerformanceThread(Context context, ArrayList<Performance> perList) {
+    public PerformanceThread(ArrayList<Data> perList) {
         super();
-        this.context = context;
         this.perList = perList;
     }
 
@@ -26,7 +25,7 @@ public class PerformanceThread extends AsyncTask<ArrayList<Performance>, Void, A
     }
 
     @Override
-    protected void onPostExecute(ArrayList<Performance> foods) {
+    protected void onPostExecute(ArrayList<Data> foods) {
         super.onPostExecute(foods);
     }
 
@@ -36,22 +35,22 @@ public class PerformanceThread extends AsyncTask<ArrayList<Performance>, Void, A
     }
 
     @Override
-    protected void onCancelled(ArrayList<Performance> foods) {
+    protected void onCancelled(ArrayList<Data> foods) {
         super.onCancelled(foods);
     }
 
     @Override
-    protected ArrayList<Performance> doInBackground(ArrayList<Performance>... params) {
+    protected ArrayList<Data> doInBackground(ArrayList<Data>... params) {
         PerformanceParser parser = new PerformanceParser();
-        ArrayList<Performance> DTOList = null;
+        ArrayList<Data> DTOList = null;
         try {
             DTOList = parser.jsonParser();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        for (Performance entity : DTOList) {
-            perList.add(new Performance(R.drawable.nonregistered, entity.getName(), entity.getAddr(), entity.getClcdnm(), entity.getTelno(), entity.getCinema(), entity.getxPos(), entity.getyPos()));
+        for (Data entity : DTOList) {
+            perList.add(new Data(R.drawable.nonregistered, entity.getName(), entity.getAddr(), entity.getClcdnm(), entity.getTelno(), entity.getCinema(), entity.getxPos(), entity.getyPos()));
         }
         return perList;
     }

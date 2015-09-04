@@ -10,6 +10,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.user.application.R;
+import com.example.user.application.datamanager.Data;
 
 import java.util.ArrayList;
 
@@ -19,10 +20,10 @@ import java.util.ArrayList;
 public class PerformanceList extends BaseAdapter {
     Context maincon;
     LayoutInflater inflater;
-    ArrayList<Performance> performancesList;
+    ArrayList<Data> performancesList;
     int layout;
 
-    public PerformanceList(Context context, int layout, ArrayList<Performance> performancesList) {
+    public PerformanceList(Context context, int layout, ArrayList<Data> performancesList) {
         this.maincon = context;
         this.layout = layout;
         this.performancesList = performancesList;
@@ -51,19 +52,22 @@ public class PerformanceList extends BaseAdapter {
         if (convertView == null) {
             convertView = inflater.inflate(layout, parent, false);
         }
-        ImageView img = (ImageView) convertView.findViewById(R.id.perimg);
+        ImageView img = (ImageView) convertView.findViewById(R.id.listimg);
         img.setImageResource(performancesList.get(position).getIcon());
 
-        TextView name = (TextView) convertView.findViewById(R.id.pername);
+        TextView name = (TextView) convertView.findViewById(R.id.listname);
         name.setText(performancesList.get(position).getName());
 
-        TextView addr = (TextView) convertView.findViewById(R.id.peraddr);
+        TextView addr = (TextView) convertView.findViewById(R.id.listaddr);
         addr.setText(performancesList.get(position).getAddr());
 
-        TextView clcdnm = (TextView) convertView.findViewById(R.id.perclcdnm);
+        TextView clcdnm = (TextView) convertView.findViewById(R.id.listclcdnm);
         clcdnm.setText(performancesList.get(position).getClcdnm());
 
-        RatingBar star = (RatingBar) convertView.findViewById(R.id.perrating);
+        ImageView order = (ImageView) convertView.findViewById(R.id.listorder);
+//        order.setImageResource(performancesList.get(position).getIcon());
+
+        RatingBar star = (RatingBar) convertView.findViewById(R.id.listrating);
         star.setRating(performancesList.get(position).getStar());
 
         return convertView;

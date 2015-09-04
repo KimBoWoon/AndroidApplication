@@ -6,6 +6,7 @@
 
     <ImageView
         android:layout_width="200px"
-        android:layout_height="200px" />
+        android:layout_height="200px"
+        android:background="@drawable/nonregistered"/>
 
 </LinearLayout>

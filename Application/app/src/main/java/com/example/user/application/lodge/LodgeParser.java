@@ -1,5 +1,7 @@
 package com.example.user.application.lodge;
 
+import com.example.user.application.datamanager.Data;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,15 +23,15 @@ public class LodgeParser {
             "{\"시설유형\":\"팬션\",\"연락처\":\"031-572-3453\",\"경도\":\"127.1844424\",\"위도\":\"37.7201582\",\"업소명\":\"에이스여관\",\"소재지지번주소\":\"경기도 남양주시 진접읍 장현리 351번지 26호\"}," +
             "{\"시설유형\":\"팬션\",\"연락처\":\"031-527-7079\",\"경도\":\"127.2041298\",\"위도\":\"37.7453191\",\"업소명\":\"광산장여관\",\"소재지지번주소\":\"경기도 남양주시 진접읍 팔야리 781번지 1호\"}]";
 
-    public ArrayList<Lodge> jsonParser() {
-        ArrayList<Lodge> list = new ArrayList<Lodge>();
+    public ArrayList<Data> jsonParser() {
+        ArrayList<Data> list = new ArrayList<Data>();
         try {
             //JSON String으로 부터 JSONArray 생성. [](대괄호)
             JSONArray jArr = new JSONArray(json);
             for (int i = 0; i < jArr.length(); i++) {
                 //JSONArray에서 i번째 해당하는 JSONObject를 추출.
                 JSONObject jObj = jArr.getJSONObject(i);
-                Lodge lodge = new Lodge();
+                Data lodge = new Data();
                 //각 이름("id"/"tel")에 해당하는 값을 추출.
                 lodge.setName(jObj.getString("업소명"));
                 lodge.setAddr(jObj.getString("소재지지번주소"));

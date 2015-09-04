@@ -14,12 +14,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.user.application.R;
+import com.example.user.application.datamanager.Data;
 
 /**
  * Created by user on 15. 8. 20.
  */
 public class BeautyInfo extends Activity {
-    private Beauty beauty;
+    private Data beauty;
     private TextView name;
     private TextView time;
     private TextView useInfo;
@@ -54,7 +55,7 @@ public class BeautyInfo extends Activity {
         switch (v.getId()) {
             case R.id.beautyinfobtn:
                 infobtn.setBackground(getDrawable(R.drawable.information_click));
-                menubtn.setBackground(getDrawable(R.drawable.menu));
+                menubtn.setBackground(getDrawable(R.drawable.charge));
                 reviewbtn.setBackground(getDrawable(R.drawable.review));
                 FragmentTransaction tr1 = fragmentManager.beginTransaction();
                 BeautyInfomation bi = new BeautyInfomation();
@@ -63,7 +64,7 @@ public class BeautyInfo extends Activity {
                 break;
             case R.id.beautymenubtn:
                 infobtn.setBackground(getDrawable(R.drawable.information));
-                menubtn.setBackground(getDrawable(R.drawable.menu_click));
+                menubtn.setBackground(getDrawable(R.drawable.charge_click));
                 reviewbtn.setBackground(getDrawable(R.drawable.review));
                 FragmentTransaction tr2 = fragmentManager.beginTransaction();
                 BeautyMenu bm = new BeautyMenu();
@@ -72,7 +73,7 @@ public class BeautyInfo extends Activity {
                 break;
             case R.id.beautyreviewbtn:
                 infobtn.setBackground(getDrawable(R.drawable.information));
-                menubtn.setBackground(getDrawable(R.drawable.menu));
+                menubtn.setBackground(getDrawable(R.drawable.charge));
                 reviewbtn.setBackground(getDrawable(R.drawable.review_click));
                 FragmentTransaction tr3 = fragmentManager.beginTransaction();
                 BeautyReview br = new BeautyReview();
@@ -110,7 +111,7 @@ public class BeautyInfo extends Activity {
             View root = inflater.inflate(R.layout.beauty_info, container, false);
 
             Intent intent = getIntent();
-            beauty = (Beauty) intent.getSerializableExtra("Item");
+            beauty = (Data) intent.getSerializableExtra("Item");
 
             name = (TextView) root.findViewById(R.id.beautyinfoname);
             name.setText(beauty.getName());

@@ -1,5 +1,7 @@
 package com.example.user.application.performance;
 
+import com.example.user.application.datamanager.Data;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,15 +23,15 @@ public class PerformanceParser {
             "{\"cinema\":소극장\",\"clCdNm\":\"무용\",\"telno\":\"02-3472-1420\",\"XPos\":\"127.0149449\",\"YPos\":\"37.4810913\",\"yadmNm\":\"국립현대무용단\",\"addr\":\"서울특별시 서초구 남부순환로 2406\"}," +
             "{\"cinema\":소극장\",\"clCdNm\":\"무용\",\"telno\":\"02-879-0613\",\"XPos\":\"126.9561687\",\"YPos\":\"37.4804658\",\"yadmNm\":\"(사)트러스트무용단\",\"addr\":\"서울특별시 관악구 행운동 1665-1\"}]";
 
-    public ArrayList<Performance> jsonParser() {
-        ArrayList<Performance> list = new ArrayList<Performance>();
+    public ArrayList<Data> jsonParser() {
+        ArrayList<Data> list = new ArrayList<Data>();
         try {
             //JSON String으로 부터 JSONArray 생성. [](대괄호)
             JSONArray jArr = new JSONArray(json);
             for (int i = 0; i < jArr.length(); i++) {
                 //JSONArray에서 i번째 해당하는 JSONObject를 추출.
                 JSONObject jObj = jArr.getJSONObject(i);
-                Performance performance = new Performance();
+                Data performance = new Data();
                 //각 이름("id"/"tel")에 해당하는 값을 추출.
                 performance.setCinema(jObj.getString("cinema"));
                 performance.setName(jObj.getString("yadmNm"));

@@ -10,6 +10,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.user.application.R;
+import com.example.user.application.datamanager.Data;
 
 import java.util.ArrayList;
 
@@ -18,10 +19,10 @@ import java.util.ArrayList;
  */
 public class FoodList extends BaseAdapter {
     private LayoutInflater inflater;
-    private ArrayList<Food> foodsList;
+    private ArrayList<Data> foodsList;
     private int layout;
 
-    public FoodList(Context context, int layout, ArrayList<Food> foodsList) {
+    public FoodList(Context context, int layout, ArrayList<Data> foodsList) {
         this.layout = layout;
         this.foodsList = foodsList;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -49,19 +50,22 @@ public class FoodList extends BaseAdapter {
         if (convertView == null) {
             convertView = inflater.inflate(layout, parent, false);
         }
-        ImageView img = (ImageView) convertView.findViewById(R.id.foodimg);
+        ImageView img = (ImageView) convertView.findViewById(R.id.listimg);
         img.setImageResource(foodsList.get(position).getIcon());
 
-        TextView name = (TextView) convertView.findViewById(R.id.foodname);
+        TextView name = (TextView) convertView.findViewById(R.id.listname);
         name.setText(foodsList.get(position).getName());
 
-        TextView addr = (TextView) convertView.findViewById(R.id.foodaddr);
+        TextView addr = (TextView) convertView.findViewById(R.id.listaddr);
         addr.setText(foodsList.get(position).getAddr());
 
-        TextView clcdnm = (TextView) convertView.findViewById(R.id.foodclcdnm);
+        TextView clcdnm = (TextView) convertView.findViewById(R.id.listclcdnm);
         clcdnm.setText(foodsList.get(position).getClcdnm());
 
-        RatingBar star = (RatingBar) convertView.findViewById(R.id.foodrating);
+        ImageView order = (ImageView) convertView.findViewById(R.id.listorder);
+//        order.setImageResource(foodsList.get(position).getIcon());
+
+        RatingBar star = (RatingBar) convertView.findViewById(R.id.listrating);
         star.setRating(foodsList.get(position).getStar());
 
         return convertView;

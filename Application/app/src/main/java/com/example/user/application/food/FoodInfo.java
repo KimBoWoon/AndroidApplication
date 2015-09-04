@@ -16,12 +16,13 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.user.application.R;
+import com.example.user.application.datamanager.Data;
 
 /**
  * Created by user on 15. 8. 20.
  */
 public class FoodInfo extends Activity {
-    private Food food;
+    private Data food;
     private TextView name;
     private TextView time;
     private TextView useInfo;
@@ -86,7 +87,6 @@ public class FoodInfo extends Activity {
                 break;
             default:
                 break;
-
         }
     }
 
@@ -115,7 +115,7 @@ public class FoodInfo extends Activity {
             View root = inflater.inflate(R.layout.food_info, container, false);
 
             Intent intent = getIntent();
-            food = (Food) intent.getSerializableExtra("Item");
+            food = (Data) intent.getSerializableExtra("Item");
 
             name = (TextView) root.findViewById(R.id.foodinfoname);
             name.setText(food.getName());

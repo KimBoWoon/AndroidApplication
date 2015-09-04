@@ -11,6 +11,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.user.application.R;
+import com.example.user.application.datamanager.Data;
 
 import java.util.ArrayList;
 
@@ -20,10 +21,10 @@ import java.util.ArrayList;
 public class HealthList extends BaseAdapter {
     Context maincon;
     LayoutInflater inflater;
-    ArrayList<Health> hospitalsList;
+    ArrayList<Data> hospitalsList;
     int layout;
 
-    public HealthList(Context context, int layout, ArrayList<Health> hospitalsList) {
+    public HealthList(Context context, int layout, ArrayList<Data> hospitalsList) {
         this.maincon = context;
         this.layout = layout;
         this.hospitalsList = hospitalsList;
@@ -53,20 +54,23 @@ public class HealthList extends BaseAdapter {
             convertView = inflater.inflate(layout, parent, false);
         }
 
-        ImageView img = (ImageView) convertView.findViewById(R.id.hospitalimg);
+        ImageView img = (ImageView) convertView.findViewById(R.id.listimg);
         img.setImageResource(hospitalsList.get(position).getIcon());
 
-        TextView name = (TextView) convertView.findViewById(R.id.hospitalname);
+        TextView name = (TextView) convertView.findViewById(R.id.listname);
         name.setText(hospitalsList.get(position).getName());
 
-        TextView addr = (TextView) convertView.findViewById(R.id.hospitaladdr);
+        TextView addr = (TextView) convertView.findViewById(R.id.listaddr);
         addr.setText(hospitalsList.get(position).getAddr());
         //addr.setText("즐겨찾기 " + hospitalsList.get(position).getCnt());
 
-        TextView clcdnm = (TextView) convertView.findViewById(R.id.hospitalclcdnm);
+        TextView clcdnm = (TextView) convertView.findViewById(R.id.listclcdnm);
         clcdnm.setText(hospitalsList.get(position).getClcdnm());
 
-        RatingBar star = (RatingBar) convertView.findViewById(R.id.healthrating);
+        ImageView order = (ImageView) convertView.findViewById(R.id.listorder);
+//        order.setImageResource(hospitalsList.get(position).getIcon());
+
+        RatingBar star = (RatingBar) convertView.findViewById(R.id.listrating);
         star.setRating(hospitalsList.get(position).getStar());
 
         return convertView;
